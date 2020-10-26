@@ -4,7 +4,8 @@
   "description": "RSS aggregator",
   "main": "index.js",
   "scripts": {
-    "test": "jest --colors"
+    "test": "npx -n --experimental-vm-modules jest --colors",
+    "coverage": "npx -n --experimental-vm-modules jest --colors --coverage"
   },
   "repository": {
     "type": "git",

@@ -11,5 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
+      # - name: Hexlet project check
+      #   uses: hexlet/project-action@release
+
+      - run: make install
+      - run: make lint
+  
+      - name: Test and publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TEST_COVERAGE }}
+        with:
+          coverageCommand: make coverage
