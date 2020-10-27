@@ -1,6 +1,5 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import _ from 'lodash';
 import jumbotron from './jumbotron';
 
 const container = document.createElement('div');
