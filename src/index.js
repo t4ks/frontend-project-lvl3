@@ -1,9 +1,10 @@
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import _ from 'lodash';
+import jumbotron from './jumbotron';
 
-const component = () => {
-  const div = document.createElement('div');
-  div.innerHTML = _.join(['Hello', 'World'], ' ');
-  return div;
-};
+const container = document.createElement('div');
+container.classList.add('container');
 
-document.body.appendChild(component());
+container.appendChild(jumbotron());
+document.body.appendChild(container);
