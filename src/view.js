@@ -35,13 +35,7 @@ const prepareFeeds = (rssFeeds, rssItems) => {
   return feeds;
 };
 
-export default (state) => {
-  const watchedState = onChange(state, (path, value, previousValue) => {
-    console.log('Path -> ', path);
-    console.log('Value -> ', value);
-    console.log('PrevValue -> ', previousValue);
-  });
-
+const initForm = () => {
   const rssForm = document.createElement('div');
   rssForm.classList.add('jumbotron');
 
@@ -64,15 +58,25 @@ export default (state) => {
   addButton.classList.add('btn', 'btn-primary', 'btn-lg');
   addButton.textContent = 'Add';
   rssForm.appendChild(addButton);
+  return rssForm;
+};
+
+const initRssTable = () => {
+  const rssTable = document.createElement('div');
+  rssTable.classList.add('container-xl');
+};
+
+export default (state) => {
+  const watchedState = onChange(state, (path, value, previousValue) => {
+    console.log('Path -> ', path);
+    console.log('Value -> ', value);
+    console.log('PrevValue -> ', previousValue);
+  });
 
   const main = document.createElement('main');
   main.classList.add('flex-grow-1');
 
-  main.appendChild(rssForm);
-
-  const rssTable = document.createElement('div');
-  rssTable.classList.add('container-xl');
-
+  const rssTable = initRssTable();
   const feeds = prepareFeeds(watchedState.feeds, watchedState.items);
 
   feeds.forEach((f) => {
@@ -80,6 +84,7 @@ export default (state) => {
     rssTable.append(...f.items);
   });
 
+  main.appendChild(initForm());
   main.appendChild(rssTable);
 
   return main;
