@@ -1,4 +1,5 @@
 import onChange from 'on-change';
+import * as yup from 'yup';
 
 const createRssFeed = (rssFeed) => {
   const feedRow = document.createElement('div');
@@ -35,6 +36,18 @@ const prepareFeeds = (rssFeeds, rssItems) => {
   return feeds;
 };
 
+const showErrors = (rssForm, errorMessages) => {
+  const feedback = rssForm.querySelector('.feedback');
+  feedback.classList.add('text-danger');
+  feedback.textContent = errorMessages.join(', ');
+};
+
+const clearFeedback = (rssForm) => {
+  const feedback = rssForm.querySelector('.feedback');
+  feedback.classList.remove(...feedback.classList);
+  feedback.classList.add('feedback');
+};
+
 const initForm = () => {
   const rssForm = document.createElement('div');
   rssForm.classList.add('jumbotron');
@@ -48,11 +61,16 @@ const initForm = () => {
   rssInputField.classList.add('form-control');
   rssInputField.setAttribute('type', 'text');
   rssInputField.setAttribute('aria-label', 'RSS');
+  rssInputField.setAttribute('required', 'true');
   rssForm.appendChild(rssInputField);
 
   const hr = document.createElement('hr');
   hr.classList.add('my-4');
   rssForm.appendChild(hr);
+
+  const feedbackContainer = document.createElement('div');
+  feedbackContainer.classList.add('feedback');
+  rssForm.appendChild(feedbackContainer);
 
   const addButton = document.createElement('a');
   addButton.classList.add('btn', 'btn-primary', 'btn-lg');
@@ -64,6 +82,7 @@ const initForm = () => {
 const initRssTable = () => {
   const rssTable = document.createElement('div');
   rssTable.classList.add('container-xl');
+  return rssTable;
 };
 
 export default (state) => {
@@ -73,10 +92,27 @@ export default (state) => {
     console.log('PrevValue -> ', previousValue);
   });
 
+  const rssForm = initForm();
+  const rssTable = initRssTable();
+
+  const schema = yup.object().shape({
+    rssUrl: yup.string().url(),
+  });
+
+  const handleRssFieldChange = (e) => {
+    watchedState.form.rssUrl = e.target.value;
+  };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    schema.validate({ rssUrl: watchedState.form.rssUrl }).catch((err) => {
+      showErrors(rssForm, err.errors);
+    });
+  };
+
   const main = document.createElement('main');
   main.classList.add('flex-grow-1');
 
-  const rssTable = initRssTable();
   const feeds = prepareFeeds(watchedState.feeds, watchedState.items);
 
   feeds.forEach((f) => {
@@ -84,7 +120,10 @@ export default (state) => {
     rssTable.append(...f.items);
   });
 
-  main.appendChild(initForm());
+  rssForm.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
+  rssForm.querySelector('.btn-primary').addEventListener('click', handleSubmitForm);
+
+  main.appendChild(rssForm);
   main.appendChild(rssTable);
 
   return main;
