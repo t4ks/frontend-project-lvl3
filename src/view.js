@@ -36,47 +36,77 @@ const prepareFeeds = (rssFeeds, rssItems) => {
   return feeds;
 };
 
-const showErrors = (rssForm, errorMessages) => {
-  const feedback = rssForm.querySelector('.feedback');
+const showErrors = (errorMessages) => {
+  const feedback = document.querySelector('.feedback');
   feedback.classList.add('text-danger');
   feedback.textContent = errorMessages.join(', ');
+  document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };
 
-const clearFeedback = (rssForm) => {
-  const feedback = rssForm.querySelector('.feedback');
+const clearErrors = () => {
+  const feedback = document.querySelector('.feedback');
   feedback.classList.remove(...feedback.classList);
   feedback.classList.add('feedback');
+  feedback.textContent = '';
+  document.querySelector('.rss-form').querySelector('input').classList.remove('is-invalid');
 };
 
-const initForm = () => {
-  const rssForm = document.createElement('div');
-  rssForm.classList.add('jumbotron');
+const initJumbotron = () => {
+  const jumbotronElement = document.createElement('section');
+  jumbotronElement.classList.add('jumbotron', 'jumbotron-fluid', 'bg-dark');
+
+  const container = document.createElement('div');
+  container.classList.add('container-xl');
+  jumbotronElement.appendChild(container);
+
+  const mainRow = document.createElement('div');
+  mainRow.classList.add('row');
+  container.appendChild(mainRow);
+
+  const mainInfo = document.createElement('div');
+  mainInfo.classList.add('col-md-10', 'col-lg-8', 'mx-auto', 'text-white');
+  mainRow.appendChild(mainInfo);
 
   const header = document.createElement('h1');
-  header.classList.add('display-4');
-  header.textContent = 'RSS aggreagator';
-  rssForm.appendChild(header);
+  header.classList.add('display-3');
+  header.textContent = 'RSS Reader';
+  mainInfo.appendChild(header);
+
+  const rssForm = document.createElement('form');
+  rssForm.classList.add('rss-form');
+  mainInfo.appendChild(rssForm);
+
+  const formRow = document.createElement('div');
+  formRow.classList.add('form-row');
+  rssForm.appendChild(formRow);
+
+  const colInput = document.createElement('div');
+  colInput.classList.add('col');
 
   const rssInputField = document.createElement('input');
-  rssInputField.classList.add('form-control');
-  rssInputField.setAttribute('type', 'text');
+  rssInputField.classList.add('form-control', 'form-control-lg', 'w-100');
+  rssInputField.setAttribute('autofocus', '');
   rssInputField.setAttribute('aria-label', 'RSS');
-  rssInputField.setAttribute('required', 'true');
-  rssForm.appendChild(rssInputField);
-
-  const hr = document.createElement('hr');
-  hr.classList.add('my-4');
-  rssForm.appendChild(hr);
+  rssInputField.setAttribute('required', '');
+  rssInputField.setAttribute('placeholder', 'Input RSS link');
+  colInput.appendChild(rssInputField);
+  formRow.appendChild(colInput);
 
   const feedbackContainer = document.createElement('div');
   feedbackContainer.classList.add('feedback');
-  rssForm.appendChild(feedbackContainer);
+  mainInfo.appendChild(feedbackContainer);
 
-  const addButton = document.createElement('a');
-  addButton.classList.add('btn', 'btn-primary', 'btn-lg');
+  const colButton = document.createElement('div');
+  colButton.classList.add('col-auto');
+
+  const addButton = document.createElement('button');
+  addButton.classList.add('btn', 'btn-primary', 'btn-lg', 'px-sm-5');
+  addButton.setAttribute('type', 'submit');
   addButton.textContent = 'Add';
-  rssForm.appendChild(addButton);
-  return rssForm;
+  colButton.appendChild(addButton);
+  formRow.appendChild(colButton);
+
+  return jumbotronElement;
 };
 
 const initRssTable = () => {
@@ -92,7 +122,7 @@ export default (state) => {
     console.log('PrevValue -> ', previousValue);
   });
 
-  const rssForm = initForm();
+  const rssJumbotron = initJumbotron();
   const rssTable = initRssTable();
 
   const schema = yup.object().shape({
@@ -105,8 +135,9 @@ export default (state) => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
+    clearErrors();
     schema.validate({ rssUrl: watchedState.form.rssUrl }).catch((err) => {
-      showErrors(rssForm, err.errors);
+      showErrors(err.errors);
     });
   };
 
@@ -120,10 +151,10 @@ export default (state) => {
     rssTable.append(...f.items);
   });
 
-  rssForm.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
-  rssForm.querySelector('.btn-primary').addEventListener('click', handleSubmitForm);
+  rssJumbotron.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
+  rssJumbotron.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
 
-  main.appendChild(rssForm);
+  main.appendChild(rssJumbotron);
   main.appendChild(rssTable);
 
   return main;

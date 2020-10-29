@@ -2,8 +2,5 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import jumbotron from './jumbotron';
 
-const container = document.createElement('div');
-container.classList.add('container');
-
-container.appendChild(jumbotron());
-document.body.appendChild(container);
+document.body.classList.add('d-flex', 'flex-column', 'min-vh-100');
+document.body.appendChild(jumbotron());
