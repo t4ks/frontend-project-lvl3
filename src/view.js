@@ -1,5 +1,8 @@
 import onChange from 'on-change';
 import * as yup from 'yup';
+import axios from 'axios';
+
+const corsProxy = 'https://cors-anywhere.herokuapp.com';
 
 const createRssFeed = (rssFeed) => {
   const feedRow = document.createElement('div');
@@ -34,13 +37,6 @@ const prepareFeeds = (rssFeeds, rssItems) => {
     return { feed: feedRow, items: feedItems };
   });
   return feeds;
-};
-
-const showErrors = (errorMessages) => {
-  const feedback = document.querySelector('.feedback');
-  feedback.classList.add('text-danger');
-  feedback.textContent = errorMessages.join(', ');
-  document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };
 
 const clearErrors = () => {
@@ -109,17 +105,65 @@ const initJumbotron = () => {
   return jumbotronElement;
 };
 
+const showErrors = (errorsMessages) => {
+  const feedback = document.querySelector('.feedback');
+  feedback.classList.add('text-danger');
+  feedback.textContent = errorsMessages.join(', ');
+  document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
+};
+
+const toggleErrorMessages = (errorsMessages) => (
+  errorsMessages.length === 0 ? clearErrors() : showErrors(errorsMessages)
+);
+
 const initRssTable = () => {
   const rssTable = document.createElement('div');
   rssTable.classList.add('container-xl');
+
+  const feedsRow = document.createElement('div');
+  feedsRow.classList.add('row');
+  rssTable.appendChild(feedsRow);
+
+  const feedsListContainer = document.createElement('div');
+  feedsListContainer.classList.add('col-md-10', 'col-lg-8', 'mx-auto', 'feeds');
+  feedsRow.appendChild(feedsListContainer);
+
+  const feedsHeader = document.createElement('h2');
+  feedsHeader.textContent = 'Feeds';
+  feedsListContainer.appendChild(feedsHeader);
+
+  const feedsList = document.createElement('ul');
+  feedsList.classList.add('list-group', 'mb-5');
+  feedsListContainer.appendChild(feedsList);
+
+  const postsRow = document.createElement('div');
+  postsRow.classList.add('row');
+  rssTable.appendChild(postsRow);
+
+  const postsListContainer = document.createElement('div');
+  feedsListContainer.classList.add('col-md-10', 'col-lg-8', 'mx-auto', 'posts');
+  postsRow.appendChild(postsListContainer);
+
+  const postsHeader = document.createElement('h2');
+  postsHeader.textContent = 'Posts';
+  postsListContainer.appendChild(postsHeader);
+
+  const postsList = document.createElement('ul');
+  postsList.classList.add('list-group', 'mb-5');
+  postsListContainer.appendChild(postsList);
+
   return rssTable;
 };
 
 export default (state) => {
-  const watchedState = onChange(state, (path, value, previousValue) => {
-    console.log('Path -> ', path);
-    console.log('Value -> ', value);
-    console.log('PrevValue -> ', previousValue);
+  const watchedState = onChange(state, (path, value) => {
+    if (path === 'errors') {
+      return toggleErrorMessages(value);
+    }
+    if (path === 'feeds') {
+      const feeds = watchedState.feeds.map(createRssFeed);
+      
+    }
   });
 
   const rssJumbotron = initJumbotron();
@@ -135,10 +179,26 @@ export default (state) => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    clearErrors();
-    schema.validate({ rssUrl: watchedState.form.rssUrl }).catch((err) => {
-      showErrors(err.errors);
-    });
+    watchedState.errors = [];
+    schema
+      .validate({ rssUrl: watchedState.form.rssUrl })
+      .then(() => {
+        axios
+          .get(`${corsProxy}/${watchedState.form.rssUrl}`)
+          .then((response) => {
+            if (response.status !== 200) {
+              watchedState.errors = ['Network error'];
+            } else {
+              console.log('RESPONSE DATA -> ', response.data);
+            }
+          })
+          .catch(() => {
+            watchedState.errors = ['Network error'];
+          });
+      })
+      .catch((err) => {
+        watchedState.errors = err.errors;
+      });
   };
 
   const main = document.createElement('main');

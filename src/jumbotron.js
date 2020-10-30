@@ -11,6 +11,7 @@ export default () => {
     form: {
       rssUrl: '',
     },
+    errors: [],
   };
 
   return view(state);
