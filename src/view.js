@@ -155,12 +155,17 @@ const initRssTable = () => {
   return rssTable;
 };
 
+const parseFeed = (xmlDoc) => {
+  console.log('xmlDoc -> ', xmlDoc);
+  return xmlDoc;
+}
+
 export default (state) => {
   const watchedState = onChange(state, (path, value) => {
     if (path === 'errors') {
       return toggleErrorMessages(value);
     }
-    if (path === 'feeds') {
+    if (path === 'newFeed') {
       const feeds = watchedState.feeds.map(createRssFeed);
       
     }
@@ -186,11 +191,9 @@ export default (state) => {
         axios
           .get(`${corsProxy}/${watchedState.form.rssUrl}`)
           .then((response) => {
-            if (response.status !== 200) {
-              watchedState.errors = ['Network error'];
-            } else {
-              console.log('RESPONSE DATA -> ', response.data);
-            }
+            const domparser = new DOMParser();
+            watchedState.feeds.push(parseFeed(domparser.parseFromString(response.data, 'application/xml')));
+            console.log('RESPONSE DATA -> ', watchedState.feeds);
           })
           .catch(() => {
             watchedState.errors = ['Network error'];
