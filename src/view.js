@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import onChange from 'on-change';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -142,18 +143,39 @@ const initRssTable = () => {
 };
 
 const parseFeed = (xmlDoc) => {
+  const channel = xmlDoc.querySelector('channel');
+  const posts = xmlDoc.querySelector('channel').querySelectorAll('item');
+  const feedId = _.uniqueId();
   console.log('xmlDoc -> ', xmlDoc);
-  return xmlDoc;
+  console.log('channel -> ', channel);
+  console.log('items -> ', posts);
+  return {
+    feed: {
+      id: feedId,
+      name: channel.querySelector('title').textContent,
+      description: channel.querySelector('description').textContent,
+    },
+    items: Array.from(posts).map((item) => {
+      const title = item.querySelector('title').textContent;
+      const url = item.querySelector('link').textContent;
+      return {
+        id: _.uniqueId(), name: title, url, feedId,
+      };
+    }),
+  };
 };
 
-const addFeedInfo = (feed, feedItems) => {
+const addPosts = (items) => {
+  const itemsElements = items.map(createFeedItem);
+  const rssPostList = document.querySelector('div.posts').querySelector('.list-group');
+  console.log('POSTS ITEMS ELEMENTS -> ', itemsElements);
+  rssPostList.append(...itemsElements);
+};
+
+const addFeed = (feed) => {
   const feedElement = createRssFeed(feed);
   const rssFeeds = document.querySelector('div.feeds').querySelector('.list-group');
   rssFeeds.appendChild(feedElement);
-
-  const feedItemsElements = feedItems.map(createFeedItem);
-  const rssPosts = document.querySelector('.posts').querySelector('.list-group');
-  rssPosts.append(...feedItemsElements);
 };
 
 export default (state) => {
@@ -162,11 +184,15 @@ export default (state) => {
       return toggleErrorMessages(value);
     }
     if (path === 'feeds') {
-      const items = state.items.filter((i) => i.feedId === value.id);
-      return addFeedInfo(value, items);
+      return addFeed(_.last(value));
     }
     if (path === 'items') {
-      const newItems = value.filter((v) => !previousValue.includes(v));
+      console.log('items value -> ', value);
+      const newItems = value.filter((v) => (
+        _.find(previousValue, (i) => i.id === v.id) === undefined
+      ));
+      console.log('NEW ITEMS -> ', newItems);
+      return addPosts(newItems);
     }
   });
 
@@ -195,11 +221,14 @@ export default (state) => {
           .get(`${corsProxy}/${watchedState.form.rssUrl}`)
           .then((response) => {
             const domparser = new DOMParser();
-            watchedState.feeds.push(parseFeed(domparser.parseFromString(response.data, 'application/xml')));
-            console.log('RESPONSE DATA -> ', watchedState.feeds);
+            const parsedFeed = parseFeed(domparser.parseFromString(response.data, 'application/xml'));
+            console.log('parsedFeed -> ', parsedFeed);
+            watchedState.feeds.push(parsedFeed.feed);
+            watchedState.items.push(...parsedFeed.items);
           })
-          .catch(() => {
+          .catch((err) => {
             watchedState.errors = ['Network error'];
+            console.log(err);
           });
       })
       .catch((err) => {
@@ -210,12 +239,12 @@ export default (state) => {
   rssJumbotron.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
   rssJumbotron.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
 
-  window.addEventListener('load', () => {
-    watchedState.feeds.forEach((feed) => {
-      const items = watchedState.items.filter((i) => i.feedId === feed.id);
-      addFeedInfo(feed, items);
-    });
-  });
+  // window.addEventListener('load', () => {
+  //   watchedState.feeds.forEach((feed) => {
+  //     addFeed(feed);
+  //   });
+  //   addPosts(watchedState.items);
+  // });
 
   return main;
 };
