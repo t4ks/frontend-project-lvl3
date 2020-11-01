@@ -45,6 +45,39 @@ const toggleErrorMessages = (errorsMessages) => (
   errorsMessages.length === 0 ? clearErrors() : showErrors(errorsMessages)
 );
 
+const createForm = () => {
+  const rssForm = document.createElement('form');
+  rssForm.classList.add('rss-form');
+
+  const formRow = document.createElement('div');
+  formRow.classList.add('form-row');
+  rssForm.appendChild(formRow);
+
+  const colInput = document.createElement('div');
+  colInput.classList.add('col');
+
+  const rssInputField = document.createElement('input');
+  rssInputField.classList.add('form-control', 'form-control-lg', 'w-100');
+  [
+    ['autofocus', ''], ['aria-label', 'RSS'], ['required', ''], ['placeholder', 'Input RSS link'],
+  ].map((args) => rssInputField.setAttribute(...args));
+
+  colInput.appendChild(rssInputField);
+  formRow.appendChild(colInput);
+
+  const colButton = document.createElement('div');
+  colButton.classList.add('col-auto');
+
+  const addButton = document.createElement('button');
+  addButton.classList.add('btn', 'btn-primary', 'btn-lg', 'px-sm-5');
+  addButton.setAttribute('type', 'submit');
+  addButton.textContent = 'Add';
+  colButton.appendChild(addButton);
+  formRow.appendChild(colButton);
+
+  return rssForm;
+};
+
 const initJumbotron = () => {
   const jumbotronElement = document.createElement('section');
   jumbotronElement.classList.add('jumbotron', 'jumbotron-fluid', 'bg-dark');
@@ -66,39 +99,12 @@ const initJumbotron = () => {
   header.textContent = 'RSS Reader';
   mainInfo.appendChild(header);
 
-  const rssForm = document.createElement('form');
-  rssForm.classList.add('rss-form');
+  const rssForm = createForm();
   mainInfo.appendChild(rssForm);
-
-  const formRow = document.createElement('div');
-  formRow.classList.add('form-row');
-  rssForm.appendChild(formRow);
-
-  const colInput = document.createElement('div');
-  colInput.classList.add('col');
-
-  const rssInputField = document.createElement('input');
-  rssInputField.classList.add('form-control', 'form-control-lg', 'w-100');
-  [
-    ['autofocus', ''], ['aria-label', 'RSS'], ['required', ''], ['placeholder', 'Input RSS link'],
-  ].map((args) => rssInputField.setAttribute(...args));
-
-  colInput.appendChild(rssInputField);
-  formRow.appendChild(colInput);
 
   const feedbackContainer = document.createElement('div');
   feedbackContainer.classList.add('feedback');
   mainInfo.appendChild(feedbackContainer);
-
-  const colButton = document.createElement('div');
-  colButton.classList.add('col-auto');
-
-  const addButton = document.createElement('button');
-  addButton.classList.add('btn', 'btn-primary', 'btn-lg', 'px-sm-5');
-  addButton.setAttribute('type', 'submit');
-  addButton.textContent = 'Add';
-  colButton.appendChild(addButton);
-  formRow.appendChild(colButton);
 
   const main = document.querySelector('main');
   main.append(jumbotronElement);
