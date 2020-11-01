@@ -79,10 +79,10 @@ const initJumbotron = () => {
 
   const rssInputField = document.createElement('input');
   rssInputField.classList.add('form-control', 'form-control-lg', 'w-100');
-  rssInputField.setAttribute('autofocus', '');
-  rssInputField.setAttribute('aria-label', 'RSS');
-  rssInputField.setAttribute('required', '');
-  rssInputField.setAttribute('placeholder', 'Input RSS link');
+  [
+    ['autofocus', ''], ['aria-label', 'RSS'], ['required', ''], ['placeholder', 'Input RSS link'],
+  ].map((args) => rssInputField.setAttribute(...args));
+
   colInput.appendChild(rssInputField);
   formRow.appendChild(colInput);
 
@@ -100,7 +100,8 @@ const initJumbotron = () => {
   colButton.appendChild(addButton);
   formRow.appendChild(colButton);
 
-  return jumbotronElement;
+  const main = document.querySelector('main');
+  main.append(jumbotronElement);
 };
 
 const initRssTable = () => {
@@ -139,16 +140,14 @@ const initRssTable = () => {
   postsList.classList.add('list-group', 'mb-5');
   postsListContainer.appendChild(postsList);
 
-  return rssTable;
+  const main = document.querySelector('main');
+  main.append(rssTable);
 };
 
 const parseFeed = (xmlDoc) => {
   const channel = xmlDoc.querySelector('channel');
   const posts = xmlDoc.querySelector('channel').querySelectorAll('item');
   const feedId = _.uniqueId();
-  console.log('xmlDoc -> ', xmlDoc);
-  console.log('channel -> ', channel);
-  console.log('items -> ', posts);
   return {
     feed: {
       id: feedId,
@@ -168,7 +167,6 @@ const parseFeed = (xmlDoc) => {
 const addPosts = (items) => {
   const itemsElements = items.map(createFeedItem);
   const rssPostList = document.querySelector('div.posts').querySelector('.list-group');
-  console.log('POSTS ITEMS ELEMENTS -> ', itemsElements);
   rssPostList.append(...itemsElements);
 };
 
@@ -178,33 +176,42 @@ const addFeed = (feed) => {
   rssFeeds.appendChild(feedElement);
 };
 
+const clearRssInput = () => {
+  const input = document.querySelector('input.form-control');
+  input.value = '';
+};
+
 export default (state) => {
   const watchedState = onChange(state, (path, value, previousValue) => {
     if (path === 'errors') {
       return toggleErrorMessages(value);
     }
     if (path === 'feeds') {
+      if (previousValue.length === 0) {
+        initRssTable();
+      }
+      clearRssInput();
       return addFeed(_.last(value));
     }
     if (path === 'items') {
-      console.log('items value -> ', value);
       const newItems = value.filter((v) => (
         _.find(previousValue, (i) => i.id === v.id) === undefined
       ));
-      console.log('NEW ITEMS -> ', newItems);
       return addPosts(newItems);
     }
+    return null;
   });
 
   const main = document.createElement('main');
   main.classList.add('flex-grow-1');
 
-  const rssJumbotron = initJumbotron();
-  const rssTable = initRssTable();
-  main.append(rssJumbotron, rssTable);
-
   const schema = yup.object().shape({
-    rssUrl: yup.string().url(),
+    rssUrl: yup
+      .string()
+      .url()
+      .test('check-rss-url-uniq', 'Rss already exist', (value) => (
+        _.find(watchedState.feeds, (f) => f.rssUrl === value) === undefined
+      )),
   });
 
   const handleRssFieldChange = (e) => {
@@ -222,13 +229,11 @@ export default (state) => {
           .then((response) => {
             const domparser = new DOMParser();
             const parsedFeed = parseFeed(domparser.parseFromString(response.data, 'application/xml'));
-            console.log('parsedFeed -> ', parsedFeed);
-            watchedState.feeds.push(parsedFeed.feed);
+            watchedState.feeds.push({ rssUrl: watchedState.form.rssUrl, ...parsedFeed.feed });
             watchedState.items.push(...parsedFeed.items);
           })
-          .catch((err) => {
+          .catch(() => {
             watchedState.errors = ['Network error'];
-            console.log(err);
           });
       })
       .catch((err) => {
@@ -236,15 +241,11 @@ export default (state) => {
       });
   };
 
-  rssJumbotron.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
-  rssJumbotron.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
-
-  // window.addEventListener('load', () => {
-  //   watchedState.feeds.forEach((feed) => {
-  //     addFeed(feed);
-  //   });
-  //   addPosts(watchedState.items);
-  // });
+  window.addEventListener('load', () => {
+    initJumbotron();
+    document.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
+    document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
+  });
 
   return main;
 };
