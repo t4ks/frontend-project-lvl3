@@ -249,6 +249,6 @@ export default (state) => {
       });
   };
 
-  document.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
+  document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange);
   document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
 };
