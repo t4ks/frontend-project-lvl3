@@ -9,5 +9,5 @@ beforeEach(async () => {
 
 test('init', () => {
   app();
-  expect(true).toBeDefined();
+  expect(document.body.outerHTML).toMatchSnapshot();
 });

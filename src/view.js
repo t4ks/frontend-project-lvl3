@@ -106,8 +106,7 @@ const initJumbotron = () => {
   feedbackContainer.classList.add('feedback');
   mainInfo.appendChild(feedbackContainer);
 
-  const main = document.querySelector('main');
-  main.append(jumbotronElement);
+  return jumbotronElement;
 };
 
 const initRssTable = () => {
@@ -210,6 +209,9 @@ export default (state) => {
 
   const main = document.createElement('main');
   main.classList.add('flex-grow-1');
+  const jumEl = initJumbotron();
+  main.append(jumEl);
+  document.body.append(main);
 
   const schema = yup.object().shape({
     rssUrl: yup
@@ -247,11 +249,6 @@ export default (state) => {
       });
   };
 
-  window.addEventListener('load', () => {
-    initJumbotron();
-    document.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
-    document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
-  });
-
-  return main;
+  document.querySelector('input.form-control').addEventListener('change', handleRssFieldChange);
+  document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
 };
