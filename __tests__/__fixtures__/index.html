@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <title>RSS Reader</title>
   </head>
-  <body>
-  <script src="main.js"></script></body>
+  <body class="d-flex flex-column min-vh-100">
+    <main class="flex-grow-1">
+      <section class="jumbotron jumbotron-fluid bg-dark">
+        <div class="container-xl">
+          <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto text-white">
+              <h1 class="display-3">RSS Reader</h1>
+              <form class="rss-form">
+                <div class="form-row">
+                  <div class="col">
+                    <input class="form-control form-control-lg w-100" autofocus="" aria-label="RSS" required="" placeholder="Input RSS link">
+                  </div>
+                  <div class="col-auto">
+                    <button class="btn btn-primary btn-lg px-sm-5" type="submit">Add</button>
+                  </div>
+                </div>
+              </form>
+              <div class="feedback"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

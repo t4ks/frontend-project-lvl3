@@ -15,7 +15,7 @@ test('init', async () => {
 
 test('invalid rss', async () => {
   const input = document.querySelector('.form-control');
-  $(input).val('lalalal').trigger('change');
+  $(input).val('ssss').change();
   const form = document.querySelector('.rss-form');
   $(form).on('submit');
   expect(document.body.outerHTML).toMatchSnapshot();
