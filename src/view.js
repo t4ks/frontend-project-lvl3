@@ -134,11 +134,13 @@ export default (state) => {
 
   const handleRssFieldChange = (e) => {
     watchedState.form.rssUrl = e.target.value;
+    console.log('VAL ON CHANGE-> ', watchedState.form.rssUrl);
   };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
     watchedState.errors = [];
+    console.log('VAL FROM STATE-> ', state.form.rssUrl);
     schema
       .validate({ rssUrl: watchedState.form.rssUrl })
       .then(() => {
@@ -150,16 +152,19 @@ export default (state) => {
             watchedState.feeds.push({ rssUrl: watchedState.form.rssUrl, ...parsedFeed.feed });
             watchedState.items.push(...parsedFeed.items);
           })
-          .catch((err) => {
+          .catch(() => {
             watchedState.errors = ['Network error'];
-            console.log('err -> ', err);
           });
       })
       .catch((err) => {
+        console.log('CATCHED ERRORS -> ', err.errors);
         watchedState.errors = err.errors;
       });
+    console.log('ERRORS -> ', state.errors);
   };
-
-  document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange);
-  document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
+  const i = document.querySelector('input.form-control');
+  i.oninput = handleRssFieldChange;
+  i.onchange = handleRssFieldChange;
+  const f = document.querySelector('.rss-form');
+  f.onsubmit = handleSubmitForm;
 };
