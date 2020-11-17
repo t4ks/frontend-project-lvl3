@@ -1,11 +1,11 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import $ from 'jquery';
+import { screen, fireEvent, waitFor } from '@testing-library/dom';
 import app from '../src/jumbotron';
 
 beforeEach(async () => {
   const initHtml = await fs.readFile(path.join(__dirname, '__fixtures__', 'index.html'), 'utf-8');
-  document.write(initHtml);
+  document.body.innerHTML = initHtml;
   app();
 });
 
@@ -14,7 +14,8 @@ test('init', async () => {
 });
 
 test('invalid rss', async () => {
-  $('input.form-control').val('ssss').trigger('input');
-  $('form').trigger('submit');
+  fireEvent.change(screen.getByTestId('rss-field'), { target: { value: 'aaaaa' } });
+  fireEvent.submit(screen.getByTestId('rss-form'));
+  await waitFor(() => expect(screen.getByText('rssUrl must be a valid URL')));
   expect(document.body.outerHTML).toMatchSnapshot();
 });

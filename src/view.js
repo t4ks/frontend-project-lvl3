@@ -134,13 +134,11 @@ export default (state) => {
 
   const handleRssFieldChange = (e) => {
     watchedState.form.rssUrl = e.target.value;
-    console.log('VAL ON CHANGE-> ', watchedState.form.rssUrl);
   };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
     watchedState.errors = [];
-    console.log('VAL FROM STATE-> ', state.form.rssUrl);
     schema
       .validate({ rssUrl: watchedState.form.rssUrl })
       .then(() => {
@@ -157,10 +155,8 @@ export default (state) => {
           });
       })
       .catch((err) => {
-        console.log('CATCHED ERRORS -> ', err.errors);
         watchedState.errors = err.errors;
       });
-    console.log('ERRORS -> ', state.errors);
   };
   const i = document.querySelector('input.form-control');
   i.oninput = handleRssFieldChange;
