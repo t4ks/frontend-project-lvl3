@@ -158,9 +158,6 @@ export default (state) => {
         watchedState.errors = err.errors;
       });
   };
-  const i = document.querySelector('input.form-control');
-  i.oninput = handleRssFieldChange;
-  i.onchange = handleRssFieldChange;
-  const f = document.querySelector('.rss-form');
-  f.onsubmit = handleSubmitForm;
+  document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange);
+  document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
 };
