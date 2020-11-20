@@ -39,7 +39,7 @@ test('network error', async () => {
   mockAxios.get.mockImplementationOnce(() => Promise.reject(new Error('some error')));
   fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });
   fireEvent.submit(screen.getByTestId('rss-form'));
-  await waitFor(() => expect(screen.getByText('Network error')));
+  await waitFor(() => expect(screen.getByText('Сетевая ошибка')));
   expect(document.body.outerHTML).toMatchSnapshot();
 });
 
@@ -51,6 +51,6 @@ test('try to add the same rss feed twice', async () => {
   await waitFor(() => expect(screen.getByText('Feeds')));
   fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });
   fireEvent.submit(screen.getByTestId('rss-form'));
-  await waitFor(() => expect(screen.getByText('Rss already exist')));
+  await waitFor(() => expect(screen.getByText('RSS лента уже была добавлена')));
   expect(document.body.outerHTML).toMatchSnapshot();
 });

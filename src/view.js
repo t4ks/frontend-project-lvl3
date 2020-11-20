@@ -56,15 +56,15 @@ const clearErrors = () => {
   document.querySelector('.rss-form').querySelector('input').classList.remove('is-invalid');
 };
 
-const showErrors = (errorsMessages) => {
+const showErrors = (errorsMessages, translator) => {
   const feedback = document.querySelector('.feedback');
   feedback.classList.add('text-danger');
-  feedback.textContent = errorsMessages.join(', ');
+  feedback.textContent = errorsMessages.map(translator).join(', ');
   document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };
 
-const toggleErrorMessages = (errorsMessages) => (
-  errorsMessages.length === 0 ? clearErrors() : showErrors(errorsMessages)
+const toggleErrorMessages = (errorsMessages, translator) => (
+  errorsMessages.length === 0 ? clearErrors() : showErrors(errorsMessages, translator)
 );
 
 const parseFeed = (xmlDoc) => {
@@ -104,10 +104,10 @@ const clearRssInput = () => {
   input.value = '';
 };
 
-export default (state) => {
+export default (state, translator) => {
   const watchedState = onChange(state, (path, value, previousValue) => {
     if (path === 'errors') {
-      return toggleErrorMessages(value);
+      return toggleErrorMessages(value, translator);
     }
     if (path === 'feeds') {
       clearRssInput();
@@ -127,7 +127,7 @@ export default (state) => {
     rssUrl: yup
       .string()
       .url()
-      .test('check-rss-url-uniq', 'Rss already exist', (value) => (
+      .test('check-rss-url-uniq', translator('Rss already exist'), (value) => (
         _.find(watchedState.feeds, (f) => f.rssUrl === value) === undefined
       )),
   });

@@ -104,7 +104,7 @@ exports[`network error 1`] = `
               </div>
             </div>
           </form>
-          <div class=\\"feedback text-danger\\">Network error</div>
+          <div class=\\"feedback text-danger\\">Сетевая ошибка</div>
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@ exports[`try to add the same rss feed twice 1`] = `
               </div>
             </div>
           </form>
-          <div class=\\"feedback text-danger\\">Rss already exist</div>
+          <div class=\\"feedback text-danger\\">RSS лента уже была добавлена</div>
         </div>
       </div>
     </div>
