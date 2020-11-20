@@ -111,3 +111,40 @@ exports[`network error 1`] = `
   </section>
 </main></body>"
 `;
+
+exports[`try to add the same rss feed twice 1`] = `
+"<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
+  <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
+    <div class=\\"container-xl\\">
+      <div class=\\"row\\">
+        <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
+          <h1 class=\\"display-3\\">RSS Reader</h1>
+          <form data-testid=\\"rss-form\\" class=\\"rss-form\\">
+            <div class=\\"form-row\\">
+              <div class=\\"col\\">
+                <input data-testid=\\"rss-field\\" class=\\"form-control form-control-lg w-100 is-invalid\\" autofocus=\\"\\" aria-label=\\"RSS\\" required=\\"\\" placeholder=\\"Input RSS link\\">
+              </div>
+              <div class=\\"col-auto\\">
+                <button class=\\"btn btn-primary btn-lg px-sm-5\\" type=\\"submit\\">Add</button>
+              </div>
+            </div>
+          </form>
+          <div class=\\"feedback text-danger\\">Rss already exist</div>
+        </div>
+      </div>
+    </div>
+  </section>
+<div class=\\"container-xl\\">
+    <div class=\\"row\\">
+      <div class=\\"col-md-10 col-lg-8 mx-auto feeds\\">
+        <h2>Feeds</h2>
+        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\"><h3>NASA Breaking News</h3><p>A RSS news feed containing the latest NASA news articles and press releases.</p></li></ul></div>
+      </div>
+      <div class=\\"row\\">
+      <div class=\\"col-md-10 col-lg-8 mx-auto posts\\">
+        <h2>Posts</h2>
+        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a></li></ul>
+      </div>
+    </div>
+  </div></main></body>"
+`;
