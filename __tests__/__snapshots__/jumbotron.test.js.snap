@@ -79,7 +79,7 @@ exports[`invalid rss 1`] = `
               </div>
             </div>
           </form>
-          <div class=\\"feedback text-danger\\">rssUrl must be a valid URL</div>
+          <div class=\\"feedback text-danger\\">Введите корректный URL-адрес</div>
         </div>
       </div>
     </div>

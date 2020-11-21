@@ -22,7 +22,7 @@ test('init', async () => {
 test('invalid rss', async () => {
   fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'aaaaa' } });
   fireEvent.submit(screen.getByTestId('rss-form'));
-  await waitFor(() => expect(screen.getByText('rssUrl must be a valid URL')));
+  await waitFor(() => expect(screen.getByText('Введите корректный URL-адрес')));
   expect(document.body.outerHTML).toMatchSnapshot();
 });
 

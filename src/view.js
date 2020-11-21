@@ -126,7 +126,7 @@ export default (state, translator) => {
   const schema = yup.object().shape({
     rssUrl: yup
       .string()
-      .url()
+      .url(translator('Please input a valid URL'))
       .test('check-rss-url-uniq', translator('Rss already exist'), (value) => (
         _.find(watchedState.feeds, (f) => f.rssUrl === value) === undefined
       )),
