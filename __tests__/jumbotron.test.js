@@ -35,6 +35,14 @@ test('add rss', async () => {
   expect(document.body.outerHTML).toMatchSnapshot();
 });
 
+test('invalid rss format', async () => {
+  mockAxios.get.mockImplementationOnce(() => Promise.resolve({ data: 'some invalid data' }));
+  fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });
+  fireEvent.submit(screen.getByTestId('rss-form'));
+  await waitFor(() => expect(screen.getByText('Ошибка при разборе RSS ленты.')));
+  expect(document.body.outerHTML).toMatchSnapshot();
+});
+
 test('network error', async () => {
   mockAxios.get.mockImplementationOnce(() => Promise.reject(new Error('some error')));
   fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });

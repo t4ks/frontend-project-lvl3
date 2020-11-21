@@ -136,22 +136,25 @@ export default (state, translator) => {
     watchedState.form.rssUrl = e.target.value;
   };
 
+  const getRssFeed = () => axios.get(`${corsProxy}${watchedState.form.rssUrl}`);
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
     watchedState.errors = [];
     schema
       .validate({ rssUrl: watchedState.form.rssUrl })
       .then(() => {
-        axios
-          .get(`${corsProxy}${watchedState.form.rssUrl}`)
+        getRssFeed()
+          .catch(() => {
+            watchedState.errors = ['Network error'];
+          })
           .then((response) => {
             const domparser = new DOMParser();
             const parsedFeed = parseFeed(domparser.parseFromString(response.data, 'application/xml'));
             watchedState.feeds.push({ rssUrl: watchedState.form.rssUrl, ...parsedFeed.feed });
             watchedState.items.push(...parsedFeed.items);
-          })
-          .catch(() => {
-            watchedState.errors = ['Network error'];
+          }).catch(() => {
+            watchedState.errors = ['Invalid RSS format'];
           });
       })
       .catch((err) => {
