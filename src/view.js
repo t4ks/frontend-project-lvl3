@@ -143,7 +143,9 @@ export default (state, translator) => {
     watchedState.form.rssUrl = e.target.value;
   };
 
-  const getRssFeed = (url) => axios.get(`${corsProxy}${url}`).catch(() => Promise.reject(new yup.ValidationError('Network error')));
+  const getRssFeed = (url) => axios
+    .get(`${corsProxy}${url}`)
+    .catch(() => Promise.reject(new yup.ValidationError('Network error')));
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
