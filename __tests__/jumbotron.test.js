@@ -12,7 +12,13 @@ const readFixture = async (fixtureName) => {
 beforeEach(async () => {
   const initHtml = await readFixture('index.html');
   document.body.innerHTML = initHtml;
+  jest.useFakeTimers();
   app();
+});
+
+afterEach(async () => {
+  jest.clearAllTimers();
+  jest.clearAllMocks();
 });
 
 test('init', async () => {
@@ -61,4 +67,18 @@ test('try to add the same rss feed twice', async () => {
   fireEvent.submit(screen.getByTestId('rss-form'));
   await waitFor(() => expect(screen.getByText('RSS лента уже была добавлена')));
   expect(document.body.outerHTML).toMatchSnapshot();
+});
+
+test('run update feeds flow', async () => {
+  const rss = await readFixture('breaking_news.rss');
+  mockAxios.get.mockImplementationOnce(() => Promise.resolve({ data: rss }));
+  fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });
+  fireEvent.submit(screen.getByTestId('rss-form'));
+  await waitFor(() => expect(screen.getByText('Feeds')));
+
+  jest.runOnlyPendingTimers();
+  // the first init call, the second inside the updateFeeds func
+  expect(setTimeout).toHaveBeenCalledTimes(2);
+  // the first call added a new rss feed, the second inside the updateFeeds func
+  expect(mockAxios.get).toHaveBeenCalledTimes(2);
 });

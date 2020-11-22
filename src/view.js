@@ -60,7 +60,9 @@ const clearErrors = () => {
 const showErrors = (errorsMessages, translator) => {
   const feedback = document.querySelector('.feedback');
   feedback.classList.add('text-danger');
-  feedback.textContent = errorsMessages.map(translator).join(', ');
+  feedback.textContent = errorsMessages
+    .map((message) => (_.isArray(message) ? translator(...message) : translator(message)))
+    .join(', ');
   document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };
 
@@ -173,15 +175,14 @@ export default (state, translator) => {
           );
           watchedState.items.push(...newItems);
         })
-        .catch((err) => {
-          watchedState.errors = err.errors;
+        .catch(() => {
+          watchedState.errors = [['canNotUpdateFeed', { name: feed.name }]];
         });
     });
+    watchedState.errors = [];
     setTimeout(updateFeeds, syncTime);
   };
-
-  setTimeout(updateFeeds, syncTime);
-
   document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange);
   document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
+  updateFeeds();
 };
