@@ -76,9 +76,16 @@ test('run update feeds flow', async () => {
   fireEvent.submit(screen.getByTestId('rss-form'));
   await waitFor(() => expect(screen.getByText('Feeds')));
 
+  const newPosts = await readFixture('breaking_news_new_items.rss');
+  mockAxios.get.mockImplementationOnce(() => Promise.resolve({ data: newPosts }));
+
   jest.runOnlyPendingTimers();
   // the first init call, the second inside the updateFeeds func
   expect(setTimeout).toHaveBeenCalledTimes(2);
   // the first call added a new rss feed, the second inside the updateFeeds func
   expect(mockAxios.get).toHaveBeenCalledTimes(2);
+
+  // new item
+  await waitFor(() => expect(screen.getByText('NASA, US and European Partners Launch Mission to Monitor Global Ocean')));
+  expect(document.body.outerHTML).toMatchSnapshot();
 });
