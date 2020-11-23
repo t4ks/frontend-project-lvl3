@@ -89,3 +89,21 @@ test('run update feeds flow', async () => {
   await waitFor(() => expect(screen.getByText('NASA, US and European Partners Launch Mission to Monitor Global Ocean')));
   expect(document.body.outerHTML).toMatchSnapshot();
 });
+
+test('can not update feed', async () => {
+  const rss = await readFixture('breaking_news.rss');
+  mockAxios.get.mockImplementationOnce(() => Promise.resolve({ data: rss }));
+  fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });
+  fireEvent.submit(screen.getByTestId('rss-form'));
+  await waitFor(() => expect(screen.getByText('Feeds')));
+
+  mockAxios.get.mockImplementationOnce(() => Promise.resolve({ data: 'some invalid data' }));
+
+  jest.runOnlyPendingTimers();
+  // the first init call, the second inside the updateFeeds func
+  expect(setTimeout).toHaveBeenCalledTimes(2);
+  // the first call added a new rss feed, the second inside the updateFeeds func
+  expect(mockAxios.get).toHaveBeenCalledTimes(2);
+  await waitFor(() => expect(screen.getByText('Ошибка при обновлении RSS ленты: NASA Breaking News')));
+  expect(document.body.outerHTML).toMatchSnapshot();
+});
