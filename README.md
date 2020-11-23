@@ -8,5 +8,18 @@
 
 web version - https://frontend-project-lvl3-silk.vercel.app/
 
-### Hexlet tests and linter status:
-![Actions Status](/workflows/hexlet-check/badge.svg)
+## Installation
+
+make install
+
+## Local build
+
+make build
+
+## Run tests
+
+make test
+
+## Run linter
+
+make lint
