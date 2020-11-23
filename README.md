@@ -7,16 +7,16 @@ web version - https://frontend-project-lvl3-silk.vercel.app/
 
 ## Installation
 
-make install
+`make install`
 
 ## Local build
 
-make build
+`make build`
 
 ## Run tests
 
-make test
+`make test`
 
 ## Run linter
 
-make lint
+`make lint`
