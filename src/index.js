@@ -1,5 +1,5 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import jumbotron from './jumbotron';
+import init from './init';
 
-jumbotron();
+init();

@@ -1,10 +1,7 @@
 import _ from 'lodash';
 import onChange from 'on-change';
-import * as yup from 'yup';
-import axios from 'axios';
-
-const corsProxy = 'https://api.allorigins.win/raw?url=';
-const syncTime = 5 * 1000; // 5 sec
+import { handleRssFieldChange, handleSubmitForm } from './handlers';
+import updateFeeds from './rss-updater';
 
 const createRssFeed = (rssFeed) => {
   const li = document.createElement('li');
@@ -70,32 +67,6 @@ const toggleErrorMessages = (errorsMessages, translator) => (
   errorsMessages.length === 0 ? clearErrors() : showErrors(errorsMessages, translator)
 );
 
-const parseFeed = (data) => {
-  const domparser = new DOMParser();
-  const feedId = _.uniqueId();
-  try {
-    const xmlDoc = domparser.parseFromString(data, 'application/xml');
-    const channel = xmlDoc.querySelector('channel');
-    const posts = xmlDoc.querySelector('channel').querySelectorAll('item');
-    return Promise.resolve({
-      feed: {
-        id: feedId,
-        name: channel.querySelector('title').textContent,
-        description: channel.querySelector('description').textContent,
-      },
-      items: Array.from(posts).map((item) => {
-        const title = item.querySelector('title').textContent;
-        const url = item.querySelector('link').textContent;
-        return {
-          id: `${title}:${url}`, name: title, url, feedId,
-        };
-      }),
-    });
-  } catch {
-    return Promise.reject(new yup.ValidationError('Invalid RSS format'));
-  }
-};
-
 const addPosts = (items) => {
   const itemsElements = items.map(createFeedItem);
   const rssPostList = document.querySelector('div.posts').querySelector('.list-group');
@@ -132,57 +103,8 @@ export default (state, translator) => {
     return null;
   });
 
-  const schema = yup.object().shape({
-    rssUrl: yup
-      .string()
-      .url('Please input a valid URL')
-      .test('check-rss-url-uniq', 'Rss already exist', (value) => (
-        _.find(watchedState.feeds, (f) => f.rssUrl === value) === undefined
-      )),
-  });
-
-  const handleRssFieldChange = (e) => {
-    watchedState.form.rssUrl = e.target.value;
-  };
-
-  const getRssFeed = (url) => axios
-    .get(`${corsProxy}${url}`)
-    .catch(() => Promise.reject(new yup.ValidationError('Network error')));
-
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    watchedState.errors = [];
-    schema
-      .validate({ rssUrl: watchedState.form.rssUrl })
-      .then(() => getRssFeed(watchedState.form.rssUrl))
-      .then((response) => parseFeed(response.data))
-      .then((parsedFeed) => {
-        watchedState.feeds.push({ rssUrl: watchedState.form.rssUrl, ...parsedFeed.feed });
-        watchedState.items.push(...parsedFeed.items);
-      })
-      .catch((err) => {
-        watchedState.errors = err.errors;
-      });
-  };
-
-  const updateFeeds = () => {
-    watchedState.feeds.forEach((feed) => {
-      getRssFeed(feed.rssUrl)
-        .then((response) => parseFeed(response.data))
-        .then((parsedFeed) => {
-          const newItems = _.differenceWith(
-            parsedFeed.items, watchedState.items, (arrVal, othVal) => arrVal.id === othVal.id,
-          );
-          watchedState.items.push(...newItems);
-        })
-        .catch(() => {
-          watchedState.errors = [['canNotUpdateFeed', { name: feed.name }]];
-        });
-    });
-    watchedState.errors = [];
-    setTimeout(updateFeeds, syncTime);
-  };
-  document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange);
-  document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm);
-  updateFeeds();
+  document.body.classList.add('d-flex', 'flex-column', 'min-vh-100');
+  document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange(watchedState));
+  document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm(watchedState));
+  updateFeeds(watchedState);
 };

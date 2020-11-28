@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import mockAxios from 'axios';
 import path from 'path';
 import { screen, fireEvent, waitFor } from '@testing-library/dom';
-import app from '../src/jumbotron';
+import app from '../src/init';
 
 const readFixture = async (fixtureName) => {
   const data = await fs.readFile(path.join(__dirname, '__fixtures__', fixtureName), 'utf-8');
