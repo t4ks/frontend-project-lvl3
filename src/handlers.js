@@ -10,12 +10,13 @@ const handleRssFieldChange = (state) => (e) => {
 const handleSubmitForm = (state) => (e) => {
   e.preventDefault();
   state.errors = [];
+  state.form.state = 'valid';
   getFormValidationSchema(state)
     .validate({ rssUrl: state.form.data.url })
     .then(() => getRssFeed(state.form.data.url))
     .then((response) => parseFeed(response.data))
     .then((parsedFeed) => {
-      state.state = state.feeds.length === 0 ? 'initingRssTable' : '';
+      state.form.state = state.feeds.length === 0 ? 'initing-table' : '';
       state.feeds.push({ rssUrl: state.form.data.url, ...parsedFeed.feed });
       const newItems = [...parsedFeed.items];
       state.items.push(...newItems);
@@ -25,7 +26,7 @@ const handleSubmitForm = (state) => (e) => {
       state.form.state = 'added';
     })
     .catch((err) => {
-      state.errors = err.errors;
+      state.errors = [{ message: err.message }];
       state.form.state = 'error';
     });
 };

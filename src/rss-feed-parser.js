@@ -1,4 +1,3 @@
-import * as yup from 'yup';
 import _ from 'lodash';
 
 export default (data) => {
@@ -23,6 +22,6 @@ export default (data) => {
       }),
     });
   } catch {
-    return Promise.reject(new yup.ValidationError('Invalid RSS format'));
+    return Promise.reject(new Error('Invalid RSS format'));
   }
 };

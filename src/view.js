@@ -56,7 +56,7 @@ const showErrors = (errorsMessages, translator) => {
   const feedback = document.querySelector('.feedback');
   feedback.classList.add('text-danger');
   feedback.textContent = errorsMessages
-    .map((message) => (_.isArray(message) ? translator(...message) : translator(message)))
+    .map((item) => translator(item.message, _.get(item, 'params', {})))
     .join(', ');
   document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };
@@ -82,22 +82,17 @@ export default (state, translator) => {
   document.body.classList.add('d-flex', 'flex-column', 'min-vh-100');
   return onChange(state, (path, value) => {
     switch (path) {
-      case 'state':
-        switch (value) {
-          case 'initingRssTable':
-            return initRssTable();
-          default:
-            return null;
-        }
       case 'form.state':
         switch (value) {
+          case 'initing-table':
+            return initRssTable();
+          case 'valid':
+            return clearErrors();
           case 'error':
             return showErrors(state.errors, translator);
           case 'updating':
-            clearErrors();
             return addPosts(state.newItems);
           case 'adding':
-            clearErrors();
             clearRssInput();
             addFeed(_.last(state.feeds));
             return addPosts(state.newItems);

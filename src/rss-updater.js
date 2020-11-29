@@ -11,6 +11,7 @@ const getNewItems = (newItems, currentItems) => _.differenceWith(
 
 const updateFeeds = (state) => {
   state.form.state = 'valid';
+  state.errors = [];
   state.feeds.forEach((feed) => {
     getRssFeed(feed.rssUrl)
       .then((response) => parseFeed(response.data))
@@ -23,7 +24,7 @@ const updateFeeds = (state) => {
         state.newItems = [];
       })
       .catch(() => {
-        state.errors = [['canNotUpdateFeed', { name: feed.name }]];
+        state.errors = [{ message: 'canNotUpdateFeed', params: { name: feed.name } }];
         state.form.state = 'error';
       });
   });

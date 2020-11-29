@@ -23,8 +23,9 @@ export default () => {
     resources: { ru },
   }).then((t) => {
     const watchedState = view(state, t);
-    document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange(watchedState));
-    document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm(watchedState));
+    const form = document.querySelector('.rss-form');
+    form.querySelector('.form-control').addEventListener('input', handleRssFieldChange(watchedState));
+    form.addEventListener('submit', handleSubmitForm(watchedState));
     updateFeeds(watchedState);
   });
 };
