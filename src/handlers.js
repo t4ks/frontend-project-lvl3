@@ -15,11 +15,18 @@ const handleSubmitForm = (state) => (e) => {
     .then(() => getRssFeed(state.form.data.url))
     .then((response) => parseFeed(response.data))
     .then((parsedFeed) => {
+      state.state = state.feeds.length === 0 ? 'initingRssTable' : '';
       state.feeds.push({ rssUrl: state.form.data.url, ...parsedFeed.feed });
-      state.items.push(...parsedFeed.items);
+      const newItems = [...parsedFeed.items];
+      state.items.push(...newItems);
+      state.newItems = newItems;
+      state.form.state = 'adding';
+      state.newItems = [];
+      state.form.state = 'added';
     })
     .catch((err) => {
       state.errors = err.errors;
+      state.form.state = 'error';
     });
 };
 

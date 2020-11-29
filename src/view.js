@@ -1,7 +1,5 @@
 import _ from 'lodash';
 import onChange from 'on-change';
-import { handleRssFieldChange, handleSubmitForm } from './handlers';
-import updateFeeds from './rss-updater';
 
 const createRssFeed = (rssFeed) => {
   const li = document.createElement('li');
@@ -63,10 +61,6 @@ const showErrors = (errorsMessages, translator) => {
   document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };
 
-const toggleErrorMessages = (errorsMessages, translator) => (
-  errorsMessages.length === 0 ? clearErrors() : showErrors(errorsMessages, translator)
-);
-
 const addPosts = (items) => {
   const itemsElements = items.map(createFeedItem);
   const rssPostList = document.querySelector('div.posts').querySelector('.list-group');
@@ -85,26 +79,33 @@ const clearRssInput = () => {
 };
 
 export default (state, translator) => {
-  const watchedState = onChange(state, (path, value, previousValue) => {
-    if (path === 'errors') {
-      return toggleErrorMessages(value, translator);
-    }
-    if (path === 'feeds') {
-      clearRssInput();
-      return previousValue.length === 0
-        ? initRssTable() && addFeed(_.last(value)) : addFeed(_.last(value));
-    }
-    if (path === 'items') {
-      const newItems = value.filter((v) => (
-        _.find(previousValue, (i) => i.id === v.id) === undefined
-      ));
-      return addPosts(newItems);
-    }
-    return null;
-  });
-
   document.body.classList.add('d-flex', 'flex-column', 'min-vh-100');
-  document.querySelector('input.form-control').addEventListener('input', handleRssFieldChange(watchedState));
-  document.querySelector('.rss-form').addEventListener('submit', handleSubmitForm(watchedState));
-  updateFeeds(watchedState);
+  return onChange(state, (path, value) => {
+    switch (path) {
+      case 'state':
+        switch (value) {
+          case 'initingRssTable':
+            return initRssTable();
+          default:
+            return null;
+        }
+      case 'form.state':
+        switch (value) {
+          case 'error':
+            return showErrors(state.errors, translator);
+          case 'updating':
+            clearErrors();
+            return addPosts(state.newItems);
+          case 'adding':
+            clearErrors();
+            clearRssInput();
+            addFeed(_.last(state.feeds));
+            return addPosts(state.newItems);
+          default:
+            return null;
+        }
+      default:
+        return null;
+    }
+  });
 };
