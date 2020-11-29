@@ -2,6 +2,7 @@
 import getFormValidationSchema from './form-validation';
 import parseFeed from './rss-feed-parser';
 import getRssFeed from './rss-feed-requester';
+import { markFormStateAsError, markFormStateAsValid } from './utils';
 
 const handleRssFieldChange = (state) => (e) => {
   state.form.data.url = e.target.value;
@@ -9,8 +10,7 @@ const handleRssFieldChange = (state) => (e) => {
 
 const handleSubmitForm = (state) => (e) => {
   e.preventDefault();
-  state.errors = [];
-  state.form.state = 'valid';
+  markFormStateAsValid(state);
   getFormValidationSchema(state)
     .validate({ rssUrl: state.form.data.url })
     .then(() => getRssFeed(state.form.data.url))
@@ -26,8 +26,7 @@ const handleSubmitForm = (state) => (e) => {
       state.form.state = 'added';
     })
     .catch((err) => {
-      state.errors = [{ message: err.message }];
-      state.form.state = 'error';
+      markFormStateAsError({ state, err });
     });
 };
 

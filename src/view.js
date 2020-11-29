@@ -56,7 +56,7 @@ const showErrors = (errorsMessages, translator) => {
   const feedback = document.querySelector('.feedback');
   feedback.classList.add('text-danger');
   feedback.textContent = errorsMessages
-    .map((item) => translator(item.message, _.get(item, 'params', {})))
+    .map((item) => translator(item.message, item.params))
     .join(', ');
   document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
 };

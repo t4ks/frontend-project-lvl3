@@ -2,6 +2,7 @@
 import _ from 'lodash';
 import getRssFeed from './rss-feed-requester';
 import parseFeed from './rss-feed-parser';
+import { markFormStateAsError, markFormStateAsValid } from './utils';
 
 const syncTime = 5 * 1000; // 5 sec
 
@@ -10,8 +11,7 @@ const getNewItems = (newItems, currentItems) => _.differenceWith(
 );
 
 const updateFeeds = (state) => {
-  state.form.state = 'valid';
-  state.errors = [];
+  markFormStateAsValid(state);
   state.feeds.forEach((feed) => {
     getRssFeed(feed.rssUrl)
       .then((response) => parseFeed(response.data))
@@ -24,8 +24,7 @@ const updateFeeds = (state) => {
         state.newItems = [];
       })
       .catch(() => {
-        state.errors = [{ message: 'canNotUpdateFeed', params: { name: feed.name } }];
-        state.form.state = 'error';
+        markFormStateAsError({ state, err: { message: 'canNotUpdateFeed' }, params: { name: feed.name } });
       });
   });
   setTimeout(updateFeeds, syncTime, state);
