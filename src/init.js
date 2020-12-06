@@ -8,8 +8,9 @@ export default () => {
   const state = {
     feeds: [],
     items: [],
-    newItems: [],
+    showedItemsIds: [],
     form: {
+      feedback: [],
       state: '',
       data: {
         url: '',
@@ -24,7 +25,8 @@ export default () => {
   }).then((t) => {
     const watchedState = view(state, t);
     const form = document.querySelector('.rss-form');
-    form.querySelector('.form-control').addEventListener('input', handleRssFieldChange(watchedState));
+    const formInput = form.querySelector('.form-control');
+    formInput.addEventListener('input', handleRssFieldChange(watchedState));
     form.addEventListener('submit', handleSubmitForm(watchedState));
     updateFeeds(watchedState);
   });

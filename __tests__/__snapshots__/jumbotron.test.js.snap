@@ -10,14 +10,14 @@ exports[`add rss 1`] = `
           <form data-testid=\\"rss-form\\" class=\\"rss-form\\">
             <div class=\\"form-row\\">
               <div class=\\"col\\">
-                <input data-testid=\\"rss-field\\" class=\\"form-control form-control-lg w-100\\" autofocus=\\"\\" aria-label=\\"RSS\\" required=\\"\\" placeholder=\\"Input RSS link\\">
+                <input data-testid=\\"rss-field\\" class=\\"form-control form-control-lg w-100 is-valid\\" autofocus=\\"\\" aria-label=\\"RSS\\" required=\\"\\" placeholder=\\"Input RSS link\\">
               </div>
               <div class=\\"col-auto\\">
                 <button class=\\"btn btn-primary btn-lg px-sm-5\\" type=\\"submit\\">Add</button>
               </div>
             </div>
           </form>
-          <div class=\\"feedback\\"></div>
+          <div class=\\"feedback text-success\\">Новый RSS поток был добавлен</div>
         </div>
       </div>
     </div>

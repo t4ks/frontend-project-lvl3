@@ -44,25 +44,31 @@ const initRssTable = () => {
   return true;
 };
 
-const clearErrors = () => {
+const clearFeedback = () => {
   const feedback = document.querySelector('.feedback');
   feedback.classList.remove(...feedback.classList);
   feedback.classList.add('feedback');
   feedback.textContent = '';
-  document.querySelector('.rss-form').querySelector('input').classList.remove('is-invalid');
+  document.querySelector('.rss-form').querySelector('input').classList.remove('is-invalid', 'is-valid');
 };
 
-const showErrors = (errorsMessages, translator) => {
+const showFeedback = (messages, translator, isValid = true) => {
+  clearFeedback();
   const feedback = document.querySelector('.feedback');
-  feedback.classList.add('text-danger');
-  feedback.textContent = errorsMessages
+  const textClass = isValid === true ? 'text-success' : 'text-danger';
+  feedback.classList.add(textClass);
+  feedback.textContent = messages
     .map((item) => translator(item.message, item.params))
     .join(', ');
-  document.querySelector('.rss-form').querySelector('input').classList.add('is-invalid');
+  const classValidation = isValid === true ? 'is-valid' : 'is-invalid';
+  document.querySelector('.rss-form').querySelector('input').classList.add(classValidation);
 };
 
-const addPosts = (items) => {
-  const itemsElements = items.map(createFeedItem);
+const addPosts = (state) => {
+  const itemsElements = state.items
+    .filter((i) => !state.showedItemsIds.includes(i.id))
+    .map(createFeedItem);
+
   const rssPostList = document.querySelector('div.posts').querySelector('.list-group');
   rssPostList.append(...itemsElements);
 };
@@ -78,6 +84,16 @@ const clearRssInput = () => {
   input.value = '';
 };
 
+const lockSubmitFormButton = () => {
+  const submitButton = document.querySelector('.rss-form').querySelector('button');
+  submitButton.setAttribute('disabled', '');
+};
+
+const unlockSubmitFormButton = () => {
+  const submitButton = document.querySelector('.rss-form').querySelector('button');
+  submitButton.removeAttribute('disabled');
+};
+
 export default (state, translator) => {
   document.body.classList.add('d-flex', 'flex-column', 'min-vh-100');
   return onChange(state, (path, value) => {
@@ -86,16 +102,26 @@ export default (state, translator) => {
         switch (value) {
           case 'initing-table':
             return initRssTable();
-          case 'valid':
-            return clearErrors();
+          case 'awaiting':
+            unlockSubmitFormButton();
+            return clearFeedback();
           case 'error':
-            return showErrors(state.errors, translator);
+            unlockSubmitFormButton();
+            return showFeedback(state.errors, translator, { isValid: false });
           case 'updating':
-            return addPosts(state.newItems);
+            return addPosts(state);
           case 'adding':
-            clearRssInput();
             addFeed(_.last(state.feeds));
-            return addPosts(state.newItems);
+            return addPosts(state);
+          case 'downloading':
+            clearRssInput();
+            lockSubmitFormButton();
+            return showFeedback(state.form.feedback, translator);
+          case 'parsing':
+            return showFeedback(state.form.feedback, translator);
+          case 'added':
+            unlockSubmitFormButton();
+            return showFeedback(state.form.feedback, translator);
           default:
             return null;
         }

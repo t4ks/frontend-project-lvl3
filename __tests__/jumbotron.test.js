@@ -50,7 +50,9 @@ test('invalid rss format', async () => {
 });
 
 test('network error', async () => {
-  mockAxios.get.mockImplementationOnce(() => Promise.reject(new Error('some error')));
+  const err = new Error('some error');
+  err.isAxiosError = true;
+  mockAxios.get.mockImplementationOnce(() => Promise.reject(err));
   fireEvent.input(screen.getByTestId('rss-field'), { target: { value: 'https://valid.url.com/news.rss' } });
   fireEvent.submit(screen.getByTestId('rss-form'));
   await waitFor(() => expect(screen.getByText('Сетевая ошибка')));

@@ -1,30 +1,35 @@
 /* eslint-disable no-param-reassign */
 import _ from 'lodash';
-import getRssFeed from './rss-feed-requester';
+import makeRequest from './rss-feed-requester';
 import parseFeed from './rss-feed-parser';
-import { markFormStateAsError, markFormStateAsValid } from './utils';
+import { markFormStateAsError, markFormStateAsAwaitig } from './utils';
 
 const syncTime = 5 * 1000; // 5 sec
 
-const getNewItems = (newItems, currentItems) => _.differenceWith(
-  newItems, currentItems, (arrVal, othVal) => arrVal.id === othVal.id,
+const getNewPosts = (newPosts, currentPosts) => _.differenceWith(
+  newPosts, currentPosts, (newPost, currentPost) => newPost.id === currentPost.id,
 );
 
 const updateFeeds = (state) => {
-  markFormStateAsValid(state);
+  markFormStateAsAwaitig(state);
   state.feeds.forEach((feed) => {
-    getRssFeed(feed.rssUrl)
-      .then((response) => parseFeed(response.data))
+    makeRequest(feed.rssUrl)
+      .then((response) => {
+        try {
+          return Promise.resolve(parseFeed(response.data));
+        } catch {
+          return Promise.reject(new Error('Invalid RSS format'));
+        }
+      })
       .then((parsedFeed) => {
-        const newItems = getNewItems(parsedFeed.items, state.items);
-        state.items.push(...newItems);
-        state.newItems = newItems;
+        const newPosts = getNewPosts(parsedFeed.items, state.items);
+        state.items.push(...newPosts);
         state.form.state = 'updating';
+        state.showedItemsIds.push(...newPosts.map((i) => i.id));
         state.form.state = 'updated';
-        state.newItems = [];
       })
       .catch(() => {
-        markFormStateAsError({ state, err: { message: 'canNotUpdateFeed' }, params: { name: feed.name } });
+        markFormStateAsError({ state, err: { message: 'canNotUpdateFeedError' }, params: { name: feed.name } });
       });
   });
   setTimeout(updateFeeds, syncTime, state);

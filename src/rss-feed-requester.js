@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const corsProxy = 'https://api.allorigins.win/raw?url=';
 
-const getRssFeed = (url) => axios
-  .get(`${corsProxy}${url}`)
-  .catch(() => Promise.reject(new Error('Network error')));
+const makeRequest = (url) => axios.get(`${corsProxy}${url}`);
 
-export default getRssFeed;
+export default makeRequest;
