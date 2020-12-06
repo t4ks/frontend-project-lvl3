@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import parseFeed from './rss-feed-parser';
 
 const markFormStateAsAwaitig = (state) => {
   state.errors = [];
@@ -30,6 +31,14 @@ const markFormStateAsAdded = (state) => {
   state.form.state = 'added';
 };
 
+const normalizeFeed = (rawFeed) => {
+  try {
+    return Promise.resolve(parseFeed(rawFeed));
+  } catch {
+    return Promise.reject(new Error('Invalid RSS format'));
+  }
+};
+
 export {
   markFormStateAsAwaitig,
   markFormStateAsError,
@@ -37,4 +46,5 @@ export {
   makrFormStateAsParsing,
   makrFormStateAsAdding,
   markFormStateAsAdded,
+  normalizeFeed,
 };

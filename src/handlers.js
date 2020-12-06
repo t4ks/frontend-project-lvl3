@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import getFormValidationSchema from './form-validation';
-import parseFeed from './rss-feed-parser';
 import makeRequest from './rss-feed-requester';
 import {
   markFormStateAsError,
@@ -9,6 +8,7 @@ import {
   makrFormStateAsParsing,
   makrFormStateAsAdding,
   markFormStateAsAdded,
+  normalizeFeed,
 } from './utils';
 
 const addNewFeed = (feed, state) => {
@@ -32,11 +32,7 @@ const handleSubmitForm = (state) => (e) => {
     })
     .then((response) => {
       makrFormStateAsParsing(state);
-      try {
-        return Promise.resolve(parseFeed(response.data));
-      } catch {
-        return Promise.reject(new Error('Invalid RSS format'));
-      }
+      return normalizeFeed(response.data);
     })
     .then((parsedFeed) => {
       addNewFeed(parsedFeed, state);

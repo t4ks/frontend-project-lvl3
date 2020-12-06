@@ -1,8 +1,7 @@
 /* eslint-disable no-param-reassign */
 import _ from 'lodash';
 import makeRequest from './rss-feed-requester';
-import parseFeed from './rss-feed-parser';
-import { markFormStateAsError, markFormStateAsAwaitig } from './utils';
+import { markFormStateAsError, markFormStateAsAwaitig, normalizeFeed } from './utils';
 
 const syncTime = 5 * 1000; // 5 sec
 
@@ -14,13 +13,7 @@ const updateFeeds = (state) => {
   markFormStateAsAwaitig(state);
   state.feeds.forEach((feed) => {
     makeRequest(feed.rssUrl)
-      .then((response) => {
-        try {
-          return Promise.resolve(parseFeed(response.data));
-        } catch {
-          return Promise.reject(new Error('Invalid RSS format'));
-        }
-      })
+      .then((response) => normalizeFeed(response.data))
       .then((parsedFeed) => {
         const newPosts = getNewPosts(parsedFeed.items, state.items);
         state.items.push(...newPosts);
