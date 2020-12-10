@@ -4,7 +4,7 @@ const getFormValidationSchema = (state) => (
   yup.object().shape({
     rssUrl: yup
       .string()
-      .url('Please input a valid URL')
+      .url()
       .notOneOf(state.feeds.map((f) => f.rssUrl), 'Rss already exist'),
   })
 );
