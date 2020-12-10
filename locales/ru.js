@@ -5,6 +5,6 @@ export default {
     'Please input a valid URL': 'Введите корректный URL-адрес',
     'Invalid RSS format': 'Ошибка при разборе RSS ленты.',
     canNotUpdateFeedError: 'Ошибка при обновлении RSS ленты: {{name}}',
-    'RSS feed has added': 'Новый RSS поток был добавлен',
+    'The RSS feed has been added': 'Новый RSS поток был добавлен',
   },
 };

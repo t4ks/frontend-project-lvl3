@@ -27,7 +27,7 @@ const makrFormStateAsAdding = (state) => {
 };
 
 const markFormStateAsAdded = (state) => {
-  state.form.feedback = [{ message: 'RSS feed has added' }];
+  state.form.feedback = [{ message: 'The RSS feed has been added' }];
   state.form.state = 'added';
 };
 
