@@ -15,8 +15,9 @@ export default (data) => {
     items: Array.from(posts).map((item) => {
       const title = item.querySelector('title').textContent;
       const url = item.querySelector('link').textContent;
+      const description = item.querySelector('description').textContent;
       return {
-        id: `${title}:${url}`, name: title, url, feedId,
+        id: `${title}:${url}`, name: title, url, feedId, description,
       };
     }),
   };

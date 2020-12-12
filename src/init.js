@@ -5,6 +5,16 @@ import ru from '../locales/ru';
 import { handleRssFieldChange, handleSubmitForm } from './handlers';
 import updateFeeds from './rss-updater';
 
+const closeModal = (e) => {
+  e.preventDefault();
+  const modal = document.querySelector('#showPostDescription');
+  modal.classList.remove('show');
+  modal.removeAttribute('aria-modal');
+  modal.removeAttribute('style');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', true);
+};
+
 export default () => {
   const state = {
     feeds: [],
@@ -34,6 +44,10 @@ export default () => {
     const formInput = form.querySelector('.form-control');
     formInput.addEventListener('input', handleRssFieldChange(watchedState));
     form.addEventListener('submit', handleSubmitForm(watchedState));
+
+    const postModal = document.querySelector('#showPostDescription');
+    postModal.querySelector('.btn-close').addEventListener('click', closeModal);
+
     updateFeeds(watchedState);
   });
 };

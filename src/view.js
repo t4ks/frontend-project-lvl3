@@ -12,13 +12,35 @@ const createRssFeed = (rssFeed) => {
   return li;
 };
 
+const showModal = (title, description) => (e) => {
+  e.preventDefault();
+  const modal = document.querySelector('#showPostDescription');
+  const postDescription = modal.querySelector('.post-description');
+  postDescription.textContent = description;
+  const postTitle = modal.querySelector('#showPostDescriptionLabel');
+  postTitle.textContent = title;
+  modal.classList.add('show');
+  modal.setAttribute('aria-modal', true);
+  modal.removeAttribute('aria-hidden');
+  modal.removeAttribute('style');
+  modal.style.display = 'block';
+  modal.style.paddingRight = '12px';
+};
+
 const createFeedItem = (feedItem) => {
+  const feedItemContentHtml = `
+    <div class="row">
+      <div class="col-2">
+        <button type="button" class="btn btn-outline-info post-preview">Preview</button>
+      </div>
+      <div class="col">
+        <a href="${feedItem.url}">${feedItem.name}</a>
+      </div>
+    </div>`;
   const li = document.createElement('li');
   li.classList.add('list-group-item');
-  const a = document.createElement('a');
-  a.href = feedItem.url;
-  a.textContent = feedItem.name;
-  li.append(a);
+  li.innerHTML = feedItemContentHtml;
+  li.querySelector('.post-preview').addEventListener('click', showModal(feedItem.name, feedItem.description));
   return li;
 };
 
@@ -34,8 +56,7 @@ const initRssTable = () => {
         <h2>Posts</h2>
         <ul class="list-group mb-5"></ul>
       </div>
-    </div>
-  `;
+    </div>`;
   const rssTable = document.createElement('div');
   rssTable.classList.add('container-xl');
   rssTable.innerHTML = containerInnerHtml;
