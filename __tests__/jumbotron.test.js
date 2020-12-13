@@ -84,7 +84,7 @@ test('run update feeds flow', async () => {
   jest.runOnlyPendingTimers();
   // the first init call, the second inside the updateFeeds func
   expect(setTimeout).toHaveBeenCalledTimes(2);
-  // the first call added a new rss feed, the second inside the updateFeeds func
+  // the first call add a new rss feed, the second inside the updateFeeds func
   expect(mockAxios.get).toHaveBeenCalledTimes(2);
 
   // new item
