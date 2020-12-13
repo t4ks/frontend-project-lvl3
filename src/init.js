@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import { setLocale } from 'yup';
+import $ from 'jquery';
 import view from './view';
 import ru from '../locales/ru';
 import { handleRssFieldChange, handleSubmitForm } from './handlers';
@@ -7,12 +8,7 @@ import updateFeeds from './rss-updater';
 
 const closeModal = (e) => {
   e.preventDefault();
-  const modal = document.querySelector('#showPostDescription');
-  modal.classList.remove('show');
-  modal.removeAttribute('aria-modal');
-  modal.removeAttribute('style');
-  modal.style.display = 'none';
-  modal.setAttribute('aria-hidden', true);
+  $('#showPostDescription').modal({ show: false });
 };
 
 export default () => {
@@ -45,9 +41,11 @@ export default () => {
     formInput.addEventListener('input', handleRssFieldChange(watchedState));
     form.addEventListener('submit', handleSubmitForm(watchedState));
 
+    // enable close listener for post modal
     const postModal = document.querySelector('#showPostDescription');
     postModal.querySelector('.btn-close').addEventListener('click', closeModal);
 
+    // run watchers
     updateFeeds(watchedState);
   });
 };

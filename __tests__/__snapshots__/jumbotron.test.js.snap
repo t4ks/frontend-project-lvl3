@@ -4,6 +4,24 @@ exports[`add rss 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -31,16 +49,113 @@ exports[`add rss 1`] = `
       <div class=\\"row\\">
       <div class=\\"col-md-10 col-lg-8 mx-auto posts\\">
         <h2>Posts</h2>
-        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a></li></ul>
+        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
-    </div>
-  </div></main></body>"
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+      </div>
+    </div></li></ul>
+      </div>
+    </div></div></main></body>"
 `;
 
 exports[`can not update feed 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -68,16 +183,113 @@ exports[`can not update feed 1`] = `
       <div class=\\"row\\">
       <div class=\\"col-md-10 col-lg-8 mx-auto posts\\">
         <h2>Posts</h2>
-        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a></li></ul>
+        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
-    </div>
-  </div></main></body>"
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+      </div>
+    </div></li></ul>
+      </div>
+    </div></div></main></body>"
 `;
 
 exports[`init 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -103,6 +315,24 @@ exports[`invalid rss 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -128,6 +358,24 @@ exports[`invalid rss format 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -153,6 +401,24 @@ exports[`network error 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -178,6 +444,24 @@ exports[`run update feeds flow 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -205,16 +489,121 @@ exports[`run update feeds flow 1`] = `
       <div class=\\"row\\">
       <div class=\\"col-md-10 col-lg-8 mx-auto posts\\">
         <h2>Posts</h2>
-        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-us-and-european-partners-launch-mission-to-monitor-global-ocean\\">NASA, US and European Partners Launch Mission to Monitor Global Ocean</a></li></ul>
+        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
-    </div>
-  </div></main></body>"
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-us-and-european-partners-launch-mission-to-monitor-global-ocean\\">NASA, US and European Partners Launch Mission to Monitor Global Ocean</a>
+      </div>
+    </div></li></ul>
+      </div>
+    </div></div></main></body>"
 `;
 
 exports[`try to add the same rss feed twice 1`] = `
 "<body class=\\"d-flex flex-column min-vh-100\\"><main class=\\"flex-grow-1\\">
   <section class=\\"jumbotron jumbotron-fluid bg-dark\\">
     <div class=\\"container-xl\\">
+      <div class=\\"modal fade\\" id=\\"showPostDescription\\" tabindex=\\"-1\\" aria-hidden=\\"true\\" role=\\"dialog\\" aria-labelledby=\\"showPostDescriptionLabel\\">
+        <div class=\\"modal-dialog\\">
+          <div class=\\"modal-content\\">
+            <div class=\\"modal-header\\">
+              <h5 class=\\"modal-title\\" id=\\"showPostDescriptionLabel\\"></h5>
+              <button type=\\"button\\" class=\\"close\\" data-dismiss=\\"modal\\" aria-label=\\"Close\\">
+                <span aria-hidden=\\"true\\">×</span>
+              </button>
+            </div>
+            <div class=\\"modal-body\\">
+              <p class=\\"post-description\\"></p>
+            </div>
+            <div class=\\"modal-footer\\">
+              <button type=\\"button\\" class=\\"btn btn-secondary btn-close\\" data-dismiss=\\"modal\\">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class=\\"row\\">
         <div class=\\"col-md-10 col-lg-8 mx-auto text-white\\">
           <h1 class=\\"display-3\\">RSS Reader</h1>
@@ -242,8 +631,87 @@ exports[`try to add the same rss feed twice 1`] = `
       <div class=\\"row\\">
       <div class=\\"col-md-10 col-lg-8 mx-auto posts\\">
         <h2>Posts</h2>
-        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a></li><li class=\\"list-group-item\\"><a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a></li></ul>
+        <ul class=\\"list-group mb-5\\"><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
-    </div>
-  </div></main></body>"
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+      </div>
+    </div></li><li class=\\"list-group-item\\">
+    <div class=\\"row\\">
+      <div class=\\"col-2\\">
+        <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
+      </div>
+      <div class=\\"col\\">
+        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+      </div>
+    </div></li></ul>
+      </div>
+    </div></div></main></body>"
 `;

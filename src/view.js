@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import $ from 'jquery';
 import onChange from 'on-change';
 
 const createRssFeed = (rssFeed) => {
@@ -19,12 +20,7 @@ const showModal = (title, description) => (e) => {
   postDescription.textContent = description;
   const postTitle = modal.querySelector('#showPostDescriptionLabel');
   postTitle.textContent = title;
-  modal.classList.add('show');
-  modal.setAttribute('aria-modal', true);
-  modal.removeAttribute('aria-hidden');
-  modal.removeAttribute('style');
-  modal.style.display = 'block';
-  modal.style.paddingRight = '12px';
+  $(modal).modal({ show: true });
 };
 
 const createFeedItem = (feedItem) => {
