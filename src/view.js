@@ -13,19 +13,22 @@ const createRssFeed = (rssFeed) => {
   return li;
 };
 
-const showModal = (title, description) => (e) => {
+const showModal = (feedItem) => (e) => {
   e.preventDefault();
   const modal = document.querySelector('#showPostDescription');
   const postDescription = modal.querySelector('.post-description');
-  postDescription.textContent = description;
+  postDescription.textContent = feedItem.description;
   const postTitle = modal.querySelector('#showPostDescriptionLabel');
-  postTitle.textContent = title;
+  postTitle.textContent = feedItem.name;
   $(modal).modal({ show: true });
+  const feedItemRow = document.querySelector(`[data-feed-item-id='${feedItem.id}']`);
+  feedItemRow.classList.remove('font-weight-bold');
+  feedItemRow.classList.add('font-weight-normal');
 };
 
 const createFeedItem = (feedItem) => {
   const feedItemContentHtml = `
-    <div class="row">
+    <div class="row font-weight-bold" data-feed-item-id="${feedItem.id}">
       <div class="col-2">
         <button type="button" class="btn btn-outline-info post-preview">Preview</button>
       </div>
@@ -36,7 +39,7 @@ const createFeedItem = (feedItem) => {
   const li = document.createElement('li');
   li.classList.add('list-group-item');
   li.innerHTML = feedItemContentHtml;
-  li.querySelector('.post-preview').addEventListener('click', showModal(feedItem.name, feedItem.description));
+  li.querySelector('.post-preview').addEventListener('click', showModal(feedItem));
   return li;
 };
 
