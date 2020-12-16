@@ -35,6 +35,7 @@ exports[`add rss 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback text-success\\">Новый RSS поток был добавлен</div>
         </div>
       </div>
@@ -55,7 +56,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Highlights Science, New Airlock on Next Space Station Resupply Mission:http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">
@@ -63,7 +64,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">
@@ -71,7 +72,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Receives 10th Consecutive Clean Financial Audit Opinion:http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">
@@ -79,7 +80,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">
@@ -87,7 +88,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft:http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">
@@ -95,7 +96,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities:http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">
@@ -103,7 +104,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV Coverage Set for Russian Spacewalk:http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">
@@ -111,7 +112,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Science to Host Community Town Hall Meeting:http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">
@@ -119,7 +120,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"Independent Review Indicates NASA Prepared for Mars Sample Return Campaign:http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">
@@ -127,7 +128,7 @@ exports[`add rss 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
       </div>
     </div></li></ul>
       </div>
@@ -169,6 +170,7 @@ exports[`can not update feed 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback text-danger\\">Ошибка при обновлении RSS ленты: NASA Breaking News</div>
         </div>
       </div>
@@ -189,7 +191,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Highlights Science, New Airlock on Next Space Station Resupply Mission:http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">
@@ -197,7 +199,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">
@@ -205,7 +207,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Receives 10th Consecutive Clean Financial Audit Opinion:http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">
@@ -213,7 +215,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">
@@ -221,7 +223,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft:http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">
@@ -229,7 +231,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities:http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">
@@ -237,7 +239,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV Coverage Set for Russian Spacewalk:http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">
@@ -245,7 +247,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Science to Host Community Town Hall Meeting:http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">
@@ -253,7 +255,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"Independent Review Indicates NASA Prepared for Mars Sample Return Campaign:http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">
@@ -261,7 +263,7 @@ exports[`can not update feed 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
       </div>
     </div></li></ul>
       </div>
@@ -303,6 +305,7 @@ exports[`init 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback\\"></div>
         </div>
       </div>
@@ -346,6 +349,7 @@ exports[`invalid rss 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback text-danger\\">Введите корректный URL-адрес</div>
         </div>
       </div>
@@ -389,6 +393,7 @@ exports[`invalid rss format 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback text-danger\\">Ошибка при разборе RSS ленты.</div>
         </div>
       </div>
@@ -432,6 +437,7 @@ exports[`network error 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback text-danger\\">Сетевая ошибка</div>
         </div>
       </div>
@@ -475,6 +481,7 @@ exports[`run update feeds flow 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback\\"></div>
         </div>
       </div>
@@ -495,7 +502,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Highlights Science, New Airlock on Next Space Station Resupply Mission:http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">
@@ -503,7 +510,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">
@@ -511,7 +518,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Receives 10th Consecutive Clean Financial Audit Opinion:http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">
@@ -519,7 +526,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">
@@ -527,7 +534,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft:http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">
@@ -535,7 +542,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities:http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">
@@ -543,7 +550,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV Coverage Set for Russian Spacewalk:http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">
@@ -551,7 +558,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Science to Host Community Town Hall Meeting:http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">
@@ -559,7 +566,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"Independent Review Indicates NASA Prepared for Mars Sample Return Campaign:http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">
@@ -567,7 +574,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA, US and European Partners Launch Mission to Monitor Global Ocean:http://www.nasa.gov/press-release/nasa-us-and-european-partners-launch-mission-to-monitor-global-ocean\\">
@@ -575,7 +582,7 @@ exports[`run update feeds flow 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-us-and-european-partners-launch-mission-to-monitor-global-ocean\\">NASA, US and European Partners Launch Mission to Monitor Global Ocean</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-us-and-european-partners-launch-mission-to-monitor-global-ocean\\">NASA, US and European Partners Launch Mission to Monitor Global Ocean</a>
       </div>
     </div></li></ul>
       </div>
@@ -617,6 +624,7 @@ exports[`try to add the same rss feed twice 1`] = `
               </div>
             </div>
           </form>
+          <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
           <div class=\\"feedback text-danger\\">RSS лента уже была добавлена</div>
         </div>
       </div>
@@ -637,7 +645,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-hosts-virtual-event-to-leverage-stem-small-business-opportunities-with-minority\\">NASA Hosts Virtual Event to Leverage STEM, Small Business Opportunities with Minority Colleges</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Highlights Science, New Airlock on Next Space Station Resupply Mission:http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">
@@ -645,7 +653,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-highlights-science-new-airlock-on-next-space-station-resupply-mission\\">NASA Highlights Science, New Airlock on Next Space Station Resupply Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">
@@ -653,7 +661,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-arrive-at-space-station-nasa-leaders-and-crew-to\\">NASA’s SpaceX Crew-1 Astronauts Arrive at Space Station, NASA Leaders and Crew to Discuss Mission</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Receives 10th Consecutive Clean Financial Audit Opinion:http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">
@@ -661,7 +669,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-receives-10th-consecutive-clean-financial-audit-opinion\\">NASA Receives 10th Consecutive Clean Financial Audit Opinion</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station:http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">
@@ -669,7 +677,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-s-spacex-crew-1-astronauts-headed-to-international-space-station\\">NASA’s SpaceX Crew-1 Astronauts Headed to International Space Station</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft:http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">
@@ -677,7 +685,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-updates-tv-coverage-for-first-crew-rotation-flight-on-us-commercial-spacecraft\\">NASA Updates TV Coverage for First Crew Rotation Flight on US Commercial Spacecraft</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities:http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">
@@ -685,7 +693,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-to-air-sentinel-6-michael-freilich-launch-prelaunch-activities\\">NASA TV to Air Sentinel-6 Michael Freilich Launch, Prelaunch Activities</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA TV Coverage Set for Russian Spacewalk:http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">
@@ -693,7 +701,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-tv-coverage-set-for-russian-spacewalk\\">NASA TV Coverage Set for Russian Spacewalk</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"NASA Science to Host Community Town Hall Meeting:http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">
@@ -701,7 +709,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/nasa-science-to-host-community-town-hall-meeting\\">NASA Science to Host Community Town Hall Meeting</a>
       </div>
     </div></li><li class=\\"list-group-item\\">
     <div class=\\"row font-weight-bold\\" data-feed-item-id=\\"Independent Review Indicates NASA Prepared for Mars Sample Return Campaign:http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">
@@ -709,7 +717,7 @@ exports[`try to add the same rss feed twice 1`] = `
         <button type=\\"button\\" class=\\"btn btn-outline-info post-preview\\">Preview</button>
       </div>
       <div class=\\"col\\">
-        <a href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
+        <a target=\\"_blank\\" href=\\"http://www.nasa.gov/press-release/independent-review-indicates-nasa-prepared-for-mars-sample-return-campaign\\">Independent Review Indicates NASA Prepared for Mars Sample Return Campaign</a>
       </div>
     </div></li></ul>
       </div>

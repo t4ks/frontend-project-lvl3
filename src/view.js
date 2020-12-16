@@ -13,6 +13,11 @@ const createRssFeed = (rssFeed) => {
   return li;
 };
 
+const markLinkAsRead = (element) => {
+  element.classList.remove('font-weight-bold');
+  element.classList.add('font-weight-normal');
+};
+
 const showModal = (feedItem) => (e) => {
   e.preventDefault();
   const modal = document.querySelector('#showPostDescription');
@@ -22,8 +27,7 @@ const showModal = (feedItem) => (e) => {
   postTitle.textContent = feedItem.name;
   $(modal).modal({ show: true });
   const feedItemRow = document.querySelector(`[data-feed-item-id='${feedItem.id}']`);
-  feedItemRow.classList.remove('font-weight-bold');
-  feedItemRow.classList.add('font-weight-normal');
+  markLinkAsRead(feedItemRow);
 };
 
 const createFeedItem = (feedItem) => {
@@ -33,13 +37,14 @@ const createFeedItem = (feedItem) => {
         <button type="button" class="btn btn-outline-info post-preview">Preview</button>
       </div>
       <div class="col">
-        <a href="${feedItem.url}">${feedItem.name}</a>
+        <a target="_blank" href="${feedItem.url}">${feedItem.name}</a>
       </div>
     </div>`;
   const li = document.createElement('li');
   li.classList.add('list-group-item');
   li.innerHTML = feedItemContentHtml;
   li.querySelector('.post-preview').addEventListener('click', showModal(feedItem));
+  li.querySelector('a').addEventListener('click', (e) => markLinkAsRead(e.target));
   return li;
 };
 
