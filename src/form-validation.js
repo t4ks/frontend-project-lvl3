@@ -1,11 +1,11 @@
 import * as yup from 'yup';
 
-const getFormValidationSchema = (state) => (
+const getFormValidationSchema = (feeds) => (
   yup.object().shape({
     rssUrl: yup
       .string()
       .url()
-      .notOneOf(state.feeds.map((f) => f.rssUrl), 'Rss already exist'),
+      .notOneOf(feeds.map((f) => f.rssUrl), 'Rss already exist'),
   })
 );
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import _ from 'lodash';
-import makeRequest from './rss-feed-requester';
+import makeRequest from './requester';
 import { markFormStateAsError, markFormStateAsAwaitig, normalizeFeed } from './utils';
 
 const syncTime = 5 * 1000; // 5 sec

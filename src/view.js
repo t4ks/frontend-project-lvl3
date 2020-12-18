@@ -141,12 +141,12 @@ export default (state, translator) => {
           case 'downloading':
             clearRssInput();
             lockSubmitFormButton();
-            return showFeedback(state.form.feedback, translator);
+            return showFeedback(state.form.feedbacks, translator);
           case 'parsing':
-            return showFeedback(state.form.feedback, translator);
+            return showFeedback(state.form.feedbacks, translator);
           case 'added':
             unlockSubmitFormButton();
-            return showFeedback(state.form.feedback, translator);
+            return showFeedback(state.form.feedbacks, translator);
           default:
             return null;
         }

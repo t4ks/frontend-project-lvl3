@@ -17,8 +17,8 @@ export default () => {
     items: [],
     showedItemsIds: [],
     form: {
-      feedback: [],
-      state: '',
+      feedbacks: [],
+      state: 'initing',
       data: {
         url: '',
       },

@@ -12,22 +12,22 @@ const markFormStateAsError = ({ state, err, params = {} }) => {
 };
 
 const makrFormStateAsDownloading = (state) => {
-  state.form.feedback = ['RSS feed is downloading...'];
+  state.form.feedbacks = ['RSS feed is downloading...'];
   state.form.state = 'downloading';
 };
 
 const makrFormStateAsParsing = (state) => {
-  state.form.feedback = [{ message: 'RSS feed is parsing...' }];
+  state.form.feedbacks = [{ message: 'RSS feed is parsing...' }];
   state.form.state = 'parsing';
 };
 
 const makrFormStateAsAdding = (state) => {
-  state.form.feedback = [{ message: 'RSS feed is adding...' }];
+  state.form.feedbacks = [{ message: 'RSS feed is adding...' }];
   state.form.state = 'adding';
 };
 
 const markFormStateAsAdded = (state) => {
-  state.form.feedback = [{ message: 'The RSS feed has been added' }];
+  state.form.feedbacks = [{ message: 'The RSS feed has been added' }];
   state.form.state = 'added';
 };
 

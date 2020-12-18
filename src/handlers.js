@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import getFormValidationSchema from './form-validation';
-import makeRequest from './rss-feed-requester';
+import makeRequest from './requester';
 import {
   markFormStateAsError,
   markFormStateAsAwaitig,
@@ -24,7 +24,7 @@ const handleRssFieldChange = (state) => (e) => {
 const handleSubmitForm = (state) => (e) => {
   e.preventDefault();
   markFormStateAsAwaitig(state);
-  getFormValidationSchema(state)
+  getFormValidationSchema(state.feeds)
     .validate({ rssUrl: state.form.data.url })
     .then(() => {
       makrFormStateAsDownloading(state);
