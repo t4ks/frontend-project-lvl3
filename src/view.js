@@ -74,7 +74,8 @@ const clearFeedback = () => {
   feedback.classList.remove(...feedback.classList);
   feedback.classList.add('feedback');
   feedback.textContent = '';
-  document.querySelector('.rss-form').querySelector('input').classList.remove('is-invalid', 'is-valid');
+  const input = document.querySelector('.rss-form').querySelector('input');
+  input.classList.remove('is-invalid', 'is-valid');
 };
 
 const showFeedback = (messages, translator, isValid = true) => {
@@ -132,9 +133,7 @@ export default (state, translator) => {
             return clearFeedback();
           case 'error':
             unlockSubmitFormButton();
-            return showFeedback(state.errors, translator, { isValid: false });
-          case 'updating':
-            return addPosts(state);
+            return showFeedback(state.form.errors, translator, { isValid: false });
           case 'adding':
             addFeed(_.last(state.feeds));
             return addPosts(state);
@@ -147,6 +146,17 @@ export default (state, translator) => {
           case 'added':
             unlockSubmitFormButton();
             return showFeedback(state.form.feedbacks, translator);
+          default:
+            return null;
+        }
+      case 'state':
+        switch (value) {
+          case 'updating':
+            clearFeedback();
+            return addPosts(state);
+          case 'error':
+            unlockSubmitFormButton();
+            return showFeedback(state.errors, translator, { isValid: false });
           default:
             return null;
         }

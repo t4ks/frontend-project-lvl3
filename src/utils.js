@@ -2,13 +2,28 @@
 import parseFeed from './rss-feed-parser';
 
 const markFormStateAsAwaitig = (state) => {
-  state.errors = [];
+  state.form.errors = [];
   state.form.state = 'awaiting';
 };
 
+const markGlobalStateAsUpdating = (state) => {
+  state.errors = [];
+  state.state = 'updating';
+};
+
+const markGlobalStateAsUpdated = (state) => {
+  state.errors = [];
+  state.state = 'updated';
+};
+
 const markFormStateAsError = ({ state, err, params = {} }) => {
-  state.errors = [{ message: err.message, params }];
+  state.form.errors = [{ message: err.message, params }];
   state.form.state = 'error';
+};
+
+const markGlobalStateAsError = ({ state, err, params = {} }) => {
+  state.errors = [{ message: err.message, params }];
+  state.state = 'error';
 };
 
 const makrFormStateAsDownloading = (state) => {
@@ -46,5 +61,8 @@ export {
   makrFormStateAsParsing,
   makrFormStateAsAdding,
   markFormStateAsAdded,
+  markGlobalStateAsError,
+  markGlobalStateAsUpdating,
+  markGlobalStateAsUpdated,
   normalizeFeed,
 };

@@ -16,12 +16,14 @@ export default () => {
     feeds: [],
     items: [],
     showedItemsIds: [],
+    state: 'initing',
     form: {
       feedbacks: [],
-      state: 'initing',
+      state: 'awaiting',
       data: {
         url: '',
       },
+      errors: [],
     },
     errors: [],
   };
