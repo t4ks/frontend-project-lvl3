@@ -1,4 +1,8 @@
 <main class="flex-grow-1">
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000"
+    style="position: absolute; top: 0; right: 0;">
+    <div class="toast-body"></div>
+  </div>
   <section class="jumbotron jumbotron-fluid bg-dark">
     <div class="container-xl">
       <div class="modal fade" id="showPostDescription" tabindex="-1" aria-hidden="true" role="dialog" aria-labelledby="showPostDescriptionLabel">
@@ -33,7 +37,7 @@
             </div>
           </form>
           <p class="text-muted my-1">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
-          <div class="feedback"></div>
+          <div id="form-feedback" class="feedback"></div>
         </div>
       </div>
     </div>

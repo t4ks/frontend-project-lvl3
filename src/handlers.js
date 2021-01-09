@@ -1,50 +1,41 @@
 /* eslint-disable no-param-reassign */
 import getFormValidationSchema from './form-validation';
 import makeRequest from './requester';
-import {
-  markFormStateAsError,
-  markFormStateAsAwaitig,
-  makrFormStateAsDownloading,
-  makrFormStateAsParsing,
-  makrFormStateAsAdding,
-  markFormStateAsAdded,
-  normalizeFeed,
-} from './utils';
+import parseFeed from './rss-feed-parser';
 
 const addNewFeed = (feed, state) => {
   state.form.state = state.feeds.length === 0 ? 'initing-table' : '';
-  state.feeds.push({ rssUrl: state.form.data.url, ...feed.feed });
+  state.feeds.push({ rssUrl: state.form.fields.url.value, ...feed.feed });
   state.items.push(...feed.items);
 };
 
 const handleRssFieldChange = (state) => (e) => {
-  state.form.data.url = e.target.value;
+  state.form.fields.url.value = e.target.value;
 };
 
 const handleSubmitForm = (state) => (e) => {
   e.preventDefault();
-  markFormStateAsAwaitig(state);
   getFormValidationSchema(state.feeds)
-    .validate({ rssUrl: state.form.data.url })
+    .validate({ rssUrl: state.form.fields.url.value })
     .then(() => {
-      makrFormStateAsDownloading(state);
-      return makeRequest(state.form.data.url);
-    })
-    .then((response) => {
-      makrFormStateAsParsing(state);
-      return normalizeFeed(response.data);
-    })
-    .then((parsedFeed) => {
-      addNewFeed(parsedFeed, state);
-      makrFormStateAsAdding(state);
-      state.showedItemsIds.push(...parsedFeed.items.map((i) => i.id));
-      markFormStateAsAdded(state);
+      state.form.status = 'downloading';
+      makeRequest(state.form.fields.url.value)
+        .then((response) => {
+          state.form.fields.url.error = '';
+          state.form.status = 'parsing';
+          const parsedFeed = parseFeed(response.data);
+          addNewFeed(parsedFeed, state);
+          state.form.status = 'adding';
+          state.showedItemsIds.push(...parsedFeed.items.map((i) => i.id));
+          state.form.status = 'added';
+        })
+        .catch((err) => {
+          state.error = err.message;
+          state.state = 'error';
+        });
     })
     .catch((err) => {
-      if (err.isAxiosError === true) {
-        return markFormStateAsError({ state, err: { message: ['Network error'] } });
-      }
-      return markFormStateAsError({ state, err });
+      state.form.fields.url.error = err.message;
     });
 };
 

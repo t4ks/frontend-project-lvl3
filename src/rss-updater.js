@@ -1,12 +1,7 @@
 /* eslint-disable no-param-reassign */
 import _ from 'lodash';
 import makeRequest from './requester';
-import {
-  markGlobalStateAsError,
-  markGlobalStateAsUpdating,
-  markGlobalStateAsUpdated,
-  normalizeFeed,
-} from './utils';
+import parseFeed from './rss-feed-parser';
 
 const syncTime = 5 * 1000; // 5 sec
 
@@ -17,16 +12,17 @@ const getNewPosts = (newPosts, currentPosts) => _.differenceWith(
 const updateFeeds = (state) => {
   state.feeds.forEach((feed) => {
     makeRequest(feed.rssUrl)
-      .then((response) => normalizeFeed(response.data))
-      .then((parsedFeed) => {
+      .then((response) => {
+        const parsedFeed = parseFeed(response.data);
         const newPosts = getNewPosts(parsedFeed.items, state.items);
         state.items.push(...newPosts);
-        markGlobalStateAsUpdating(state);
+        state.state = 'updating';
         state.showedItemsIds.push(...newPosts.map((i) => i.id));
-        markGlobalStateAsUpdated(state);
+        state.state = 'updated';
       })
-      .catch(() => {
-        markGlobalStateAsError({ state, err: { message: 'canNotUpdateFeedError' }, params: { name: feed.name } });
+      .catch((err) => {
+        state.error = `The rss feed: ${feed.name} has not updated. Original error: ${err.message}`;
+        state.state = 'error';
       });
   });
   setTimeout(updateFeeds, syncTime, state);

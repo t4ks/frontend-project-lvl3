@@ -69,8 +69,8 @@ const initRssTable = () => {
   return true;
 };
 
-const clearFeedback = () => {
-  const feedback = document.querySelector('.feedback');
+const clearFormFeedback = () => {
+  const feedback = document.querySelector('#form-feedback');
   feedback.classList.remove(...feedback.classList);
   feedback.classList.add('feedback');
   feedback.textContent = '';
@@ -78,16 +78,44 @@ const clearFeedback = () => {
   input.classList.remove('is-invalid', 'is-valid');
 };
 
-const showFeedback = (messages, translator, isValid = true) => {
-  clearFeedback();
-  const feedback = document.querySelector('.feedback');
-  const textClass = isValid === true ? 'text-success' : 'text-danger';
-  feedback.classList.add(textClass);
-  feedback.textContent = messages
-    .map((item) => translator(item.message, item.params))
-    .join(', ');
-  const classValidation = isValid === true ? 'is-valid' : 'is-invalid';
-  document.querySelector('.rss-form').querySelector('input').classList.add(classValidation);
+const renderFormFeedback = (message, translator) => {
+  const feedback = document.querySelector('#form-feedback');
+  feedback.classList.add('text-success');
+  feedback.textContent = translator(message);
+  document.querySelector('.rss-form').querySelector('input').classList.add('is-valid');
+};
+
+const buildErrorElement = (error) => {
+  const el = document.createElement('div');
+  el.classList.add('feedback', 'text-danger');
+  el.textContent = error;
+  return el;
+};
+
+const renderFormErrors = (form, translator) => {
+  const input = document.querySelector('input.form-control');
+  const error = input.nextSibling;
+  if (error) {
+    error.remove();
+  }
+
+  const field = form.fields.url;
+  if (field.error === '') {
+    input.classList.remove('is-invalid');
+    input.classList.add('is-valid');
+  } else {
+    input.classList.add('is-invalid');
+    input.classList.remove('is-valid');
+    const errorElement = buildErrorElement(translator(field.error));
+    input.after(errorElement);
+  }
+};
+
+const renderAppError = (error, translator) => {
+  if (!error) return;
+  const toastBody = document.querySelector('.toast-body');
+  toastBody.textContent = translator(error);
+  $('.toast').toast('show');
 };
 
 const addPosts = (state) => {
@@ -101,8 +129,13 @@ const addPosts = (state) => {
 
 const addFeed = (feed) => {
   const feedElement = createRssFeed(feed);
-  const rssFeeds = document.querySelector('div.feeds').querySelector('.list-group');
-  rssFeeds.appendChild(feedElement);
+  let rssFeeds = document.querySelector('div.feeds');
+  if (rssFeeds === null) {
+    initRssTable();
+    rssFeeds = document.querySelector('div.feeds');
+  }
+  const rssList = rssFeeds.querySelector('.list-group');
+  rssList.appendChild(feedElement);
 };
 
 const clearRssInput = () => {
@@ -112,7 +145,7 @@ const clearRssInput = () => {
 
 const lockSubmitFormButton = () => {
   const submitButton = document.querySelector('.rss-form').querySelector('button');
-  submitButton.setAttribute('disabled', '');
+  submitButton.setAttribute('disabled', true);
 };
 
 const unlockSubmitFormButton = () => {
@@ -124,42 +157,37 @@ export default (state, translator) => {
   document.body.classList.add('d-flex', 'flex-column', 'min-vh-100');
   return onChange(state, (path, value) => {
     switch (path) {
-      case 'form.state':
+      case 'form.status':
         switch (value) {
-          case 'initing-table':
-            return initRssTable();
-          case 'awaiting':
-            unlockSubmitFormButton();
-            return clearFeedback();
-          case 'error':
-            unlockSubmitFormButton();
-            return showFeedback(state.form.errors, translator, { isValid: false });
+          case 'idle':
+            return unlockSubmitFormButton();
           case 'adding':
             addFeed(_.last(state.feeds));
             return addPosts(state);
           case 'downloading':
             clearRssInput();
-            lockSubmitFormButton();
-            return showFeedback(state.form.feedbacks, translator);
-          case 'parsing':
-            return showFeedback(state.form.feedbacks, translator);
+            return lockSubmitFormButton();
           case 'added':
             unlockSubmitFormButton();
-            return showFeedback(state.form.feedbacks, translator);
+            clearFormFeedback();
+            return renderFormFeedback('The RSS feed has been added', translator);
           default:
             return null;
         }
       case 'state':
         switch (value) {
           case 'updating':
-            clearFeedback();
             return addPosts(state);
           case 'error':
             unlockSubmitFormButton();
-            return showFeedback(state.errors, translator, { isValid: false });
+            return renderAppError(state.error, translator);
           default:
             return null;
         }
+      case 'form.fields.url.error':
+        return renderFormErrors(state.form, translator);
+      case 'form.fields.url.value':
+        return clearFormFeedback();
       default:
         return null;
     }

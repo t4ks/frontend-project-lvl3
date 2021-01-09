@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import { setLocale } from 'yup';
 import $ from 'jquery';
-import view from './view';
+import initView from './view';
 import ru from '../locales/ru';
 import { handleRssFieldChange, handleSubmitForm } from './handlers';
 import updateFeeds from './rss-updater';
@@ -16,16 +16,18 @@ export default () => {
     feeds: [],
     items: [],
     showedItemsIds: [],
-    state: 'initing',
+    state: 'idle',
     form: {
       feedbacks: [],
-      state: 'awaiting',
-      data: {
-        url: '',
+      status: 'idle',
+      fields: {
+        url: {
+          value: '',
+          error: null,
+        },
       },
-      errors: [],
     },
-    errors: [],
+    error: null,
   };
 
   i18next.init({
@@ -37,7 +39,7 @@ export default () => {
         url: 'Please input a valid URL',
       },
     });
-    const watchedState = view(state, t);
+    const watchedState = initView(state, t);
     const form = document.querySelector('.rss-form');
     const formInput = form.querySelector('.form-control');
     formInput.addEventListener('input', handleRssFieldChange(watchedState));
