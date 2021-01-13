@@ -129,11 +129,7 @@ const addPosts = (state) => {
 
 const addFeed = (feed) => {
   const feedElement = createRssFeed(feed);
-  let rssFeeds = document.querySelector('div.feeds');
-  if (rssFeeds === null) {
-    initRssTable();
-    rssFeeds = document.querySelector('div.feeds');
-  }
+  const rssFeeds = document.querySelector('div.feeds');
   const rssList = rssFeeds.querySelector('.list-group');
   rssList.appendChild(feedElement);
 };
@@ -161,12 +157,26 @@ export default (state, translator) => {
         switch (value) {
           case 'idle':
             return unlockSubmitFormButton();
-          case 'adding':
-            addFeed(_.last(state.feeds));
-            return addPosts(state);
           case 'downloading':
             clearRssInput();
             return lockSubmitFormButton();
+          case 'error':
+            return renderFormErrors(state.form, translator);
+          default:
+            return null;
+        }
+      case 'state':
+        switch (value) {
+          case 'initing-table':
+            return initRssTable();
+          case 'updating':
+            return addPosts(state);
+          case 'error':
+            unlockSubmitFormButton();
+            return renderAppError(state.error, translator);
+          case 'adding':
+            addFeed(_.last(state.feeds));
+            return addPosts(state);
           case 'added':
             unlockSubmitFormButton();
             clearFormFeedback();
@@ -174,18 +184,6 @@ export default (state, translator) => {
           default:
             return null;
         }
-      case 'state':
-        switch (value) {
-          case 'updating':
-            return addPosts(state);
-          case 'error':
-            unlockSubmitFormButton();
-            return renderAppError(state.error, translator);
-          default:
-            return null;
-        }
-      case 'form.fields.url.error':
-        return renderFormErrors(state.form, translator);
       case 'form.fields.url.value':
         return clearFormFeedback();
       default:
