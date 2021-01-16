@@ -5,11 +5,14 @@
     <title>RSS Reader</title>
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <main class="flex-grow-1">
-      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000"
-        style="position: absolute; top: 0; right: 0;">
-        <div class="toast-body"></div>
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div class="toast-container position-absolute p-3 top-0 end-0" id="toastPlacement">
+        <div class="toast" role="alert" data-delay="2000" aria-atomic="true">
+          <div class="toast-body"></div>
+        </div>
       </div>
+    </div>
+    <main class="flex-grow-1">
       <section class="jumbotron jumbotron-fluid bg-dark">
         <div class="container-xl">
           <div class="modal fade" id="showPostDescription" tabindex="-1" aria-hidden="true" role="dialog" aria-labelledby="showPostDescriptionLabel">

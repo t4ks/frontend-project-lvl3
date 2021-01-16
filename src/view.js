@@ -114,7 +114,7 @@ const renderFormErrors = (form, translator) => {
 const renderAppError = (error, translator) => {
   if (!error) return;
   const toastBody = document.querySelector('.toast-body');
-  toastBody.textContent = translator(error);
+  toastBody.textContent = translator(error.message, { ...error.params });
   $('.toast').toast('show');
 };
 
@@ -160,8 +160,6 @@ export default (state, translator) => {
           case 'downloading':
             clearRssInput();
             return lockSubmitFormButton();
-          case 'error':
-            return renderFormErrors(state.form, translator);
           default:
             return null;
         }
@@ -186,6 +184,8 @@ export default (state, translator) => {
         }
       case 'form.fields.url.value':
         return clearFormFeedback();
+      case 'form.fields.url.error':
+        return renderFormErrors(state.form, translator);
       default:
         return null;
     }

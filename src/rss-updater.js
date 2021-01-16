@@ -21,7 +21,13 @@ const updateFeeds = (state) => {
         state.state = 'updated';
       })
       .catch((err) => {
-        state.error = `The rss feed: ${feed.name} has not updated. Original error: ${err.message}`;
+        state.error = {
+          message: 'app.errors.feedHasntBeenUpdated',
+          params: {
+            origError: err.message,
+            feedName: feed.name,
+          },
+        };
         state.state = 'error';
       });
   });

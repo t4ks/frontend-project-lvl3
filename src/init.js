@@ -35,6 +35,9 @@ export default () => {
     resources: { ru },
   }).then((t) => {
     setLocale({
+      mixed: {
+        notOneOf: 'Rss already exist',
+      },
       string: {
         url: 'Please input a valid URL',
       },

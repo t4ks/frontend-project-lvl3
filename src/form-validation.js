@@ -5,7 +5,7 @@ const getFormValidationSchema = (feeds) => (
     rssUrl: yup
       .string()
       .url()
-      .notOneOf(feeds.map((f) => f.rssUrl), 'Rss already exist'),
+      .notOneOf(feeds.map((f) => f.rssUrl)),
   })
 );
 
