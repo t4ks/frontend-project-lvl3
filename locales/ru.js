@@ -1,11 +1,13 @@
 export default {
   translation: {
-    'Network error': 'Сетевая ошибка',
-    'Rss already exist': 'RSS лента уже была добавлена',
-    'Please input a valid URL': 'Введите корректный URL-адрес',
-    'Invalid RSS format': 'Ошибка при разборе RSS ленты.',
-    'The RSS feed has been added': 'Новый RSS поток был добавлен',
+    form: {
+      errors: {
+        inputValidUrl: 'Введите корректный URL-адрес',
+        rssAlreadyExists: 'RSS лента уже была добавлена',
+      },
+    },
     app: {
+      rssAdded: 'Новый RSS поток был добавлен',
       errors: {
         feedHasntBeenUpdated: 'Ошибка при обновлении RSS ленты: {{feedName}}. Ошибка: {{origError}}',
       },

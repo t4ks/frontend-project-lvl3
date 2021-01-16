@@ -32,7 +32,6 @@ const handleSubmitForm = (state) => (e) => {
         });
     })
     .catch((err) => {
-      console.log('err -> ', err.message);
       state.form.fields.url.error = err.message;
       state.form.status = 'error';
     });

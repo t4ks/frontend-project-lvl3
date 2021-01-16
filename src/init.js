@@ -36,10 +36,10 @@ export default () => {
   }).then((t) => {
     setLocale({
       mixed: {
-        notOneOf: 'Rss already exist',
+        notOneOf: 'form.errors.rssAlreadyExists',
       },
       string: {
-        url: 'Please input a valid URL',
+        url: 'form.errors.inputValidUrl',
       },
     });
     const watchedState = initView(state, t);

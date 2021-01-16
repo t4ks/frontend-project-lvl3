@@ -178,7 +178,7 @@ export default (state, translator) => {
           case 'added':
             unlockSubmitFormButton();
             clearFormFeedback();
-            return renderFormFeedback('The RSS feed has been added', translator);
+            return renderFormFeedback('app.rssAdded', translator);
           default:
             return null;
         }
