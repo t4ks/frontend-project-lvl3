@@ -100,9 +100,10 @@ const renderFormErrors = (form, translator) => {
   }
 
   const field = form.fields.url;
-  if (field.error === '') {
+  if (field.error === null) {
     input.classList.remove('is-invalid');
     input.classList.add('is-valid');
+    clearFormFeedback();
   } else {
     input.classList.add('is-invalid');
     input.classList.remove('is-valid');
@@ -172,19 +173,16 @@ export default (state, translator) => {
           case 'error':
             unlockSubmitFormButton();
             return renderAppError(state.error, translator);
-          case 'adding':
-            addFeed(_.last(state.feeds));
-            return addPosts(state);
           case 'added':
+            addFeed(_.last(state.feeds));
+            addPosts(state);
             unlockSubmitFormButton();
             clearFormFeedback();
             return renderFormFeedback('app.rssAdded', translator);
           default:
             return null;
         }
-      case 'form.fields.url.value':
-        return clearFormFeedback();
-      case 'form.fields.url.error':
+      case 'form.fields.url':
         return renderFormErrors(state.form, translator);
       default:
         return null;

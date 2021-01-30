@@ -4,7 +4,10 @@ import makeRequest from './requester';
 import parseFeed from './rss-feed-parser';
 
 const handleRssFieldChange = (state) => (e) => {
-  state.form.fields.url.value = e.target.value;
+  state.form.fields.url = {
+    value: e.target.value,
+    error: null,
+  };
 };
 
 const handleSubmitForm = (state) => (e) => {
@@ -16,14 +19,12 @@ const handleSubmitForm = (state) => (e) => {
       makeRequest(state.form.fields.url.value)
         .then((response) => {
           state.form.fields.url.error = '';
-          state.state = 'parsing';
           const parsedFeed = parseFeed(response.data);
           state.state = state.feeds.length === 0 ? 'initing-table' : '';
           state.feeds.push({ rssUrl: state.form.fields.url.value, ...parsedFeed.feed });
           state.items.push(...parsedFeed.items);
-          state.state = 'adding';
-          state.showedItemsIds.push(...parsedFeed.items.map((i) => i.id));
           state.state = 'added';
+          state.showedItemsIds.push(...parsedFeed.items.map((i) => i.id));
           state.form.status = 'idle';
         })
         .catch((err) => {
@@ -32,7 +33,11 @@ const handleSubmitForm = (state) => (e) => {
         });
     })
     .catch((err) => {
-      state.form.fields.url.error = err.message;
+      const val = state.form.fields.url.value;
+      state.form.fields.url = {
+        error: err.message,
+        value: val,
+      };
       state.form.status = 'error';
     });
 };

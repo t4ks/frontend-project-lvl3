@@ -413,7 +413,7 @@ exports[`try to add the same rss feed twice 1`] = `
             </div>
           </form>
           <p class=\\"text-muted my-1\\">Example: https://www.nasa.gov/rss/dyn/breaking_news.rss</p>
-          <div id=\\"form-feedback\\" class=\\"feedback text-success\\">Новый RSS поток был добавлен</div>
+          <div id=\\"form-feedback\\" class=\\"feedback\\"></div>
         </div>
       </div>
     </div>
