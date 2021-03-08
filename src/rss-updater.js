@@ -18,7 +18,7 @@ const updateFeeds = (state) => {
         state.items.push(...newPosts);
         state.state = 'updating';
         state.showedItemsIds.push(...newPosts.map((i) => i.id));
-        state.state = 'updated';
+        state.state = 'idle';
       })
       .catch((err) => {
         state.error = {

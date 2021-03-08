@@ -4,6 +4,7 @@ import makeRequest from './requester';
 import parseFeed from './rss-feed-parser';
 
 const handleRssFieldChange = (state) => (e) => {
+  state.form.status = 'filling';
   state.form.fields.url = {
     value: e.target.value,
     error: null,
@@ -20,17 +21,18 @@ const handleSubmitForm = (state) => (e) => {
         .then((response) => {
           state.form.fields.url.error = '';
           const parsedFeed = parseFeed(response.data);
-          state.state = state.feeds.length === 0 ? 'initing-table' : '';
+          state.state = state.feeds.length === 0 ? 'initing' : 'idle';
           state.feeds.push({ rssUrl: state.form.fields.url.value, ...parsedFeed.feed });
           state.items.push(...parsedFeed.items);
-          state.state = 'added';
+          state.state = 'adding';
           state.showedItemsIds.push(...parsedFeed.items.map((i) => i.id));
-          state.form.status = 'idle';
         })
         .catch((err) => {
           state.error = err.message;
           state.state = 'error';
         });
+      state.form.status = 'filling';
+      state.state = 'idle';
     })
     .catch((err) => {
       const val = state.form.fields.url.value;

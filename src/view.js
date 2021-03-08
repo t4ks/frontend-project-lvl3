@@ -119,11 +119,10 @@ const renderAppError = (error, translator) => {
   $('.toast').toast('show');
 };
 
-const addPosts = (state) => {
-  const itemsElements = state.items
-    .filter((i) => !state.showedItemsIds.includes(i.id))
+const addPosts = (posts, showedPostsIds) => {
+  const itemsElements = posts
+    .filter((i) => !showedPostsIds.includes(i.id))
     .map(createFeedItem);
-
   const rssPostList = document.querySelector('div.posts').querySelector('.list-group');
   rssPostList.append(...itemsElements);
 };
@@ -156,34 +155,34 @@ export default (state, translator) => {
     switch (path) {
       case 'form.status':
         switch (value) {
-          case 'idle':
+          case 'filling':
             return unlockSubmitFormButton();
           case 'downloading':
+            lockSubmitFormButton();
             clearRssInput();
-            return lockSubmitFormButton();
+            return clearFormFeedback();
+          case 'error':
+            clearFormFeedback();
+            renderFormErrors(state.form, translator);
+            return unlockSubmitFormButton();
           default:
             return null;
         }
       case 'state':
         switch (value) {
-          case 'initing-table':
+          case 'initing':
             return initRssTable();
           case 'updating':
-            return addPosts(state);
-          case 'error':
-            unlockSubmitFormButton();
-            return renderAppError(state.error, translator);
-          case 'added':
+            return addPosts(state.items, state.showedItemsIds);
+          case 'adding':
             addFeed(_.last(state.feeds));
-            addPosts(state);
-            unlockSubmitFormButton();
-            clearFormFeedback();
+            addPosts(state.items, state.showedItemsIds);
             return renderFormFeedback('app.rssAdded', translator);
+          case 'error':
+            return renderAppError(state.error, translator);
           default:
             return null;
         }
-      case 'form.fields.url':
-        return renderFormErrors(state.form, translator);
       default:
         return null;
     }
