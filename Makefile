@@ -12,3 +12,6 @@ test:
 
 coverage:
 	npm run coverage
+
+run:
+	npm run start:dev

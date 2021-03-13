@@ -11,14 +11,14 @@ const getNewPosts = (newPosts, currentPosts) => _.differenceWith(
 
 const updateFeeds = (state) => {
   state.feeds.forEach((feed) => {
+    state.state = 'updating';
     makeRequest(feed.rssUrl)
       .then((response) => {
         const parsedFeed = parseFeed(response.data);
         const newPosts = getNewPosts(parsedFeed.items, state.items);
         state.items.push(...newPosts);
-        state.state = 'updating';
+        state.state = 'updated';
         state.showedItemsIds.push(...newPosts.map((i) => i.id));
-        state.state = 'idle';
       })
       .catch((err) => {
         state.error = {
@@ -31,6 +31,7 @@ const updateFeeds = (state) => {
         state.state = 'error';
       });
   });
+  state.state = 'idle';
   setTimeout(updateFeeds, syncTime, state);
 };
 

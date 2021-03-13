@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx -n --experimental-vm-modules jest --colors",
     "coverage": "npx -n --experimental-vm-modules jest --colors --coverage",
-    "build": "webpack"
+    "build": "webpack",
+    "start:dev": "NODE_ENV=development webpack serve"
   },
   "repository": {
     "type": "git",

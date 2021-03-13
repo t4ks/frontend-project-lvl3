@@ -155,36 +155,56 @@ export default (state, translator) => {
     switch (path) {
       case 'form.status':
         switch (value) {
-          case 'filling':
-            return unlockSubmitFormButton();
-          case 'downloading':
+          // form validation
+          case 'validating':
             lockSubmitFormButton();
-            clearRssInput();
-            return clearFormFeedback();
-          case 'error':
+            return;
+          case 'validated':
+            unlockSubmitFormButton();
+            return;
+          case 'invalid':
+            unlockSubmitFormButton();
             clearFormFeedback();
             renderFormErrors(state.form, translator);
-            return unlockSubmitFormButton();
+            return;
+          // load new rss
+          case 'loading':
+            lockSubmitFormButton();
+            clearRssInput();
+            clearFormFeedback();
+            return;
+          case 'succeeded':
+            addFeed(_.last(state.feeds));
+            addPosts(state.items, state.showedItemsIds);
+            unlockSubmitFormButton();
+            renderFormFeedback('app.rssAdded', translator);
+            return;
+          case 'failed':
+            clearFormFeedback();
+            unlockSubmitFormButton();
+            renderAppError(state.error, translator);
+            return;
           default:
-            return null;
+            return;
         }
       case 'state':
         switch (value) {
           case 'initing':
-            return initRssTable();
-          case 'updating':
-            return addPosts(state.items, state.showedItemsIds);
-          case 'adding':
-            addFeed(_.last(state.feeds));
+            initRssTable();
+            break;
+          // update rss feeds
+          case 'updated':
             addPosts(state.items, state.showedItemsIds);
-            return renderFormFeedback('app.rssAdded', translator);
+            break;
           case 'error':
-            return renderAppError(state.error, translator);
+            renderAppError(state.error, translator);
+            break;
           default:
-            return null;
+            break;
         }
+      // eslint-disable-next-line no-fallthrough
       default:
-        return null;
+        break;
     }
   });
 };
